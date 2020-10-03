@@ -185,8 +185,7 @@ export default function Navbar() {
 
                         <Button color="inherit">SIGNIN</Button>
                         <IconButton
-                            edge="end"
-                            aria-label="account of current user"
+                                   aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
                             onClick={handleProfileMenuOpen}
