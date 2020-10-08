@@ -8,7 +8,6 @@
 .innerContainer{
     border: 1px solid grey;
     border-radius: 5px;
-    /* padding: 50px; */
     box-shadow: 10px 10px #dadada;
 }
 
@@ -18,8 +17,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
-    /* box-shadow: 8px 4px 8px 20px rgba(0,0,0,0.2); */
-    /* background-position-x: ; */
 }
 
 .formContainer{

@@ -73,55 +73,55 @@ const RegisterComponent = (props) => {
                                         required
                                     />
                                 </div>
-                                <div class="form-group">
-                                    <label for="inputAddress2">Address 2*</label>
+                                <div className="form-group">
+                                    <label htmlFor="inputAddress2">Address 2*</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         id="inputAddress2"
                                         placeholder="Apartment, Studio, or Floor"
                                         required
                                     />
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputCity">City*</label>
+                                <div className="form-row">
+                                    <div className="form-group col-md-6">
+                                        <label htmlFor="inputCity">City*</label>
                                         <input
                                             type="text"
-                                            class="form-control"
+                                            className="form-control"
                                             id="inputCity"
                                             required
                                         />
                                     </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="inputState">State*</label>
+                                    <div className="form-group col-md-4">
+                                        <label htmlFor="inputState">State*</label>
                                         <select
                                             id="inputState"
-                                            class="form-control" required>
+                                            className="form-control" required>
                                             <option selected>Choose...</option>
                                             <option>Sri Lanka</option>
                                             <option>USA</option>
                                             <option>Other</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="inputZip">Zip*</label>
-                                        <input type="text" class="form-control" id="inputZip" required />
+                                    <div className="form-group col-md-2">
+                                        <label htmlFor="inputZip">Zip*</label>
+                                        <input type="text" className="form-control" id="inputZip" required />
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="form-check">
+                                <div className="form-group">
+                                    <div className="form-check">
                                         <input
-                                            class="form-check-input"
+                                            className="form-check-input"
                                             type="checkbox"
                                             id="gridCheck"
                                         />
-                                        <label class="form-check-label" for="gridCheck" >
-                                            By creating an account, you agree to the Blinkee.com free membership agreement and private policy
+                                        <label className="form-check-label" htmlFor="gridCheck" >
+                                            I agree to the Blinkee.com free membership agreement and private policy
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" className="btn btn-primary">
                                     Create
                                 </button>
                             </form>
