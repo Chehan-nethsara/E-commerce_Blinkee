@@ -9,6 +9,7 @@ import cart from "./component/cart";
 import about_us from "./component/about_us";
 import product from "./component/product";
 import productPage from "./component/productPage";
+import checkout from "./component/checkout";
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
         <Route exact path= '/productPage' component={productPage} />
 
         <Route exact path='/contactus' component={ Contactus } />
+
+        <Route exact path='/checkout' component={ checkout } />
 
       </Switch>
 
