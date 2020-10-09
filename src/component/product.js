@@ -25,7 +25,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import Grid from '@material-ui/core/Grid';
 
-
+import image_cart_1 from '../resources/images/image_cart_1.jpg';
+import image_cart_2 from '../resources/images/image_cart_2.jpg';
+import image_cart_4 from '../resources/images/image_cart_4.jpg';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Radio from '@material-ui/core/Radio';
@@ -33,6 +35,10 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Navbar from "./navbar";
+import GridItem from "@material-ui/core/Grid";
+import Slider from "react-slick";
+import image9 from "../resources/images/image9.jpg";
 
 function Copyright() {
     return (
@@ -119,6 +125,14 @@ function ResponsiveDrawer(props) {
     };
 
 
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true
+    };
 
 
 
@@ -131,15 +145,72 @@ function ResponsiveDrawer(props) {
     };
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-
-            </AppBar>
 
 
+        <div >
 
-            <div className={classes.heroContent}>
+            <Navbar/>
+
+                <div>
+
+                    <Grid container >
+                        <GridItem xs={1} sm={10} xs={20} >
+                            <Card>
+                                <Slider {...settings}>
+                                    <div>
+                                        <img
+                                            src={image_cart_1}
+                                            alt="First slide"
+                                            className="slick-image"
+                                        />
+                                        <div className="slick-caption">
+                                            {/*<h4>*/}
+                                            {/*    Yellowstone*/}
+                                            {/*    National Park, United States*/}
+                                            {/*</h4>*/}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img
+                                            src={image_cart_2}
+                                            alt="Second slide"
+                                            className="slick-image"
+                                        />
+                                        <div className="slick-caption">
+                                            {/*<h4>*/}
+                                            {/*    Somewhere Beyond,*/}
+                                            {/*    United States*/}
+                                            {/*</h4>*/}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img
+                                            src={image_cart_4}
+                                            alt="Third slide"
+                                            className="slick-image"
+                                        />
+                                        <div className="slick-caption">
+                                            {/*<h4>*/}
+                                            {/*    Yellowstone*/}
+                                            {/*    National Park, United States*/}
+                                            {/*</h4>*/}
+                                        </div>
+                                    </div>
+                                </Slider>
+                            </Card>
+                        </GridItem>
+                    </Grid>
+                </div>
+
+
+            <div className={classes.root}>
+                <CssBaseline />
+                <AppBar position="fixed" className={classes.appBar}>
+
+                </AppBar>
+
+
+                <div className={classes.heroContent}>
                 <Container maxWidth="sm">
 
                     <FormControl component="fieldset">
@@ -212,6 +283,7 @@ function ResponsiveDrawer(props) {
                 </Container>
 
             </main>
+        </div>
         </div>
     );
 }

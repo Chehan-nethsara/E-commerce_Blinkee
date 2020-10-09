@@ -6,15 +6,13 @@ import Container from '@material-ui/core/Container';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import Header from './AboutUs/Header';
+
 import MainFeaturedPost from './AboutUs/MainFeaturedPost';
 import FeaturedPost from './AboutUs/FeaturedPost';
 import Main from './AboutUs/Main';
 import Sidebar from './AboutUs/Sidebar';
-import Footer from './AboutUs/Footer';
-import post1 from './AboutUs/blog-post.1.md';
-import post2 from './AboutUs/blog-post.2.md';
-import post3 from './AboutUs/blog-post.3.md';
+
+import Navbar from "./navbar";
 
 const useStyles = makeStyles((theme) => ({
     mainGrid: {
@@ -52,7 +50,7 @@ const featuredPosts = [
     },
 ];
 
-const posts = [post1, post2, post3];
+
 
 
 export default function Blog() {
@@ -61,6 +59,7 @@ export default function Blog() {
     return (
         <React.Fragment>
             <CssBaseline />
+            <Navbar/>
             <Container maxWidth="lg">
                 
                 <main>
