@@ -1,44 +1,53 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-
-import Grid from '@material-ui/core/Grid';
-
-
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Navbar from './navbar';
+import Container from '@material-ui/core/Container';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
+
+import IconButton from '@material-ui/core/IconButton';
+
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
+
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionActions from '@material-ui/core/AccordionActions';
+
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Chip from '@material-ui/core/Chip';
+
+import Divider from '@material-ui/core/Divider';
+
+
+
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
+            {'Copyright Â© '}
             <Link color="inherit" href="https://material-ui.com/">
                 Your Website
             </Link>{' '}
@@ -47,300 +56,223 @@ function Copyright() {
         </Typography>
     );
 }
-const images = [
-    {
-        url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Breakfast',
-        width: '40%',
-    },
-    {
-        url: '/static/images/grid-list/burgers.jpg',
-        title: 'Burgers',
-        width: '30%',
-    },
-    {
-        url: '/static/images/grid-list/camera.jpg',
-        title: 'Camera',
-        width: '30%',
-    },
-];
-
-const drawerWidth = 240;
-
-
+const cards = [1];
 const useStyles = makeStyles((theme) => ({
     root: {
+        height: '100vh',
+        margin: theme.spacing(4),
+
+    },
+
+    paper: {
+        margin: theme.spacing(8, 4),
         display: 'flex',
-        flexWrap: 'wrap',
-        minWidth: 300,
-        width: '100%',
+        flexDirection: 'column',
+        alignItems: 'center',
     },
-    drawer: {
-        [theme.breakpoints.up('sm')]: {
-            width: drawerWidth,
-            flexShrink: 0,
-        },
+    avatar: {
+        margin: theme.spacing(2),
+        backgroundColor: theme.palette.secondary.main,
     },
-    appBar: {
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
+    form: {
+        width: '100%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
     },
-    menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
-            display: 'none',
-        },
+    submit: {
+        margin: theme.spacing(3, 0, 2),
     },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
-    drawerPaper: {
-        width: drawerWidth,
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
     },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
     },
-    icon: {
-        marginRight: theme.spacing(2),
+    expandOpen: {
+        transform: 'rotate(180deg)',
     },
-    heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
-    },
-    heroButtons: {
-        marginTop: theme.spacing(4),
-    },
-    cardGrid: {
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
+    cardMedia: {
+        paddingTop: '20%', // 16:9
     },
     card: {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
     },
-    cardMedia: {
-        paddingTop: '56.25%', // 16:9
-    },
     cardContent: {
         flexGrow: 1,
     },
-
-    image: {
-        position: 'relative',
-        height: 200,
-        [theme.breakpoints.down('xs')]: {
-            width: '100% !important', // Overrides inline-style
-            height: 100,
-        },
-        '&:hover, &$focusVisible': {
-            zIndex: 1,
-            '& $imageBackdrop': {
-                opacity: 0.15,
-            },
-            '& $imageMarked': {
-                opacity: 0,
-            },
-            '& $imageTitle': {
-                border: '4px solid currentColor',
-            },
-        },
+    cardGrid: {
+        paddingTop: theme.spacing(5),
+        paddingBottom: theme.spacing(5),
     },
-    focusVisible: {},
-    imageButton: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        display: 'flex',
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+    },
+    secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+    },
+    icon: {
+        verticalAlign: 'bottom',
+        height: 20,
+        width: 20,
+    },
+    details: {
         alignItems: 'center',
-        justifyContent: 'center',
-        color: theme.palette.common.white,
     },
-    imageSrc: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 40%',
+    column: {
+        flexBasis: '33.33%',
     },
-    imageBackdrop: {
-        position: 'absolute',
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0,
-        backgroundColor: theme.palette.common.black,
-        opacity: 0.4,
-        transition: theme.transitions.create('opacity'),
+    helper: {
+        borderLeft: `2px solid ${theme.palette.divider}`,
+        padding: theme.spacing(1, 2),
     },
-    imageTitle: {
-        position: 'relative',
-        padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
+    link: {
+        color: theme.palette.primary.main,
+        textDecoration: 'none',
+        '&:hover': {
+            textDecoration: 'underline',
+        },
     },
-    imageMarked: {
-        height: 3,
-        width: 18,
-        backgroundColor: theme.palette.common.white,
-        position: 'absolute',
-        bottom: -2,
-        left: 'calc(50% - 9px)',
-        transition: theme.transitions.create('opacity'),
-    },
+
 }));
 
-function ResponsiveDrawer(props) {
-    const { window } = props;
+const message = `Truncation should be conditionally applicable on this long line of text
+ as this is a much longer line than what the container can support. `;
+
+export default function SignInSide() {
     const classes = useStyles();
-    const theme = useTheme();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [expanded, setExpanded] = React.useState(false);
 
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
-    };
-
-
-
-
-
-    const container = window !== undefined ? () => window().document.body : undefined;
-
-    const [value, setValue] = React.useState('female');
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
     };
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-
-            </AppBar>
+        <Container  component="main" maxWidth="full">
+            <Navbar/>
+            <Container  component="main" maxWidth="full">
 
 
+                <Grid container component="main" className={classes.root}>
+                    <CssBaseline />
 
-            <div className={classes.heroContent}>
-                <Container maxWidth="sm">
+                    <Grid item xs={false} sm={4} md={7} component={Paper} elevation={5} square >
 
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend">Gender</FormLabel>
-                        <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                            <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
-                        </RadioGroup>
-                    </FormControl>
+                        <div className={classes.paper}>
+                            <Paper elevation={3} />
 
-                </Container>
+                            <Card >
+                                <CardContent>
+                            <form className={classes.form} noValidate>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                   Shopping Cart
+                                </Typography>
+                            </form>
+                                </CardContent>
+                            </Card>
 
-                <div className={classes.heroContent}>
-                    <Container maxWidth="sm">
+                        </div>
+<div>
+                                <Card >
+                                    <CardContent>
+                                <form className={classes.form} noValidate>
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                                        across all continents except Antarctica
+                                    </Typography>
+                                </form>
+                                    </CardContent>
+                                </Card>
 
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Gender</FormLabel>
-                            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
-                            </RadioGroup>
-                        </FormControl>
-
-                    </Container>
-                </div>
-
-            </div>
-
-
-
-
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
-                {images.map((image) => (
-                    <ButtonBase
-                        focusRipple
-                        key={image.title}
-                        className={classes.image}
-                        focusVisibleClassName={classes.focusVisible}
-                        style={{
-                            width: image.width,
-                        }}
-                    >
-          <span
-              className={classes.imageSrc}
-              style={{
-                  backgroundImage: `url(${image.url})`,
-              }}
-          />
-                        <span className={classes.imageBackdrop} />
-                        <span className={classes.imageButton}>
-            <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                className={classes.imageTitle}
-            >
-              {image.title}
-                <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-                    </ButtonBase>
-                ))}
-                <div className={classes.toolbar} />
-                {images.map((image) => (
-                    <ButtonBase
-                        focusRipple
-                        key={image.title}
-                        className={classes.image}
-                        focusVisibleClassName={classes.focusVisible}
-                        style={{
-                            width: image.width,
-                        }}
-                    >
-          <span
-              className={classes.imageSrc}
-              style={{
-                  backgroundImage: `url(${image.url})`,
-              }}
-          />
-                        <span className={classes.imageBackdrop} />
-                        <span className={classes.imageButton}>
-            <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                className={classes.imageTitle}
-            >
-              {image.title}
-                <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-                    </ButtonBase>
-                ))}
+</div>
+                            <div className={classes.paper}>
+                                <Paper elevation={3} />
+                                <Card >
+                                    <CardContent>
+                                        <form className={classes.form} noValidate>
+                                            <Typography variant="body2" color="textSecondary" component="p">
+                                                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                                                across all continents except Antarctica
+                                            </Typography>
+                                        </form>
+                                    </CardContent>
+                                </Card>
+                            </div>
 
 
-            </main>
+                       
+                    </Grid>
 
 
-        </div>
 
 
+
+                    <Grid item xs={12} sm={8} md={4} component={Paper} elevation={5} square>
+
+                        <div className={classes.paper}>
+                            <Paper elevation={3} />
+
+                            <Card >
+                                <CardContent>
+                                    <form className={classes.form} noValidate>
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                            Shopping Cart
+                                        </Typography>
+                                    </form>
+                                </CardContent>
+                            </Card>
+                        </div>
+
+                            <div className={classes.root}>
+                            <Accordion defaultExpanded>
+                                <AccordionSummary
+                                    expandIcon={<ExpandMoreIcon />}
+                                    aria-controls="panel1c-content"
+                                    id="panel1c-header"
+                                >
+                                    <div className={classes.column}>
+                                        <Typography className={classes.heading}>Location</Typography>
+                                    </div>
+                                    <div className={classes.column}>
+                                        <Typography className={classes.secondaryHeading}>Select trip destination</Typography>
+                                    </div>
+                                </AccordionSummary>
+                                <AccordionDetails className={classes.details}>
+                                    <div className={classes.column} />
+                                    <div className={classes.column}>
+                                        <Chip label="Barbados" onDelete={() => {}} />
+                                    </div>
+                                    <div className={clsx(classes.column, classes.helper)}>
+                                        <Typography variant="caption">
+                                            Select your destination of choice
+                                            <br />
+                                            <a href="#secondary-heading-and-columns" className={classes.link}>
+                                                Learn more
+                                            </a>
+                                        </Typography>
+                                    </div>
+                                </AccordionDetails>
+                                <Divider />
+                                <AccordionActions>
+                                    <Button size="small">Cancel</Button>
+                                    <Button size="small" color="primary">
+                                        Save
+                                    </Button>
+                                </AccordionActions>
+                            </Accordion>
+                        </div>
+
+                    </Grid>
+
+
+                </Grid>
+            </Container>
+        </Container>
     );
 }
-
-ResponsiveDrawer.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
-
-export default ResponsiveDrawer;

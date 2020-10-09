@@ -48,14 +48,13 @@ export default function MainFeaturedPost(props) {
                 <Grid item md={6}>
                     <div className={classes.mainFeaturedPostContent}>
                         <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                            {post.title}
+                            Delivering happiness on the go!
+
                         </Typography>
-                        <Typography variant="h5" color="inherit" paragraph>
-                            {post.description}
+                        <Typography variant="h3" color="inherit" paragraph>
+                            Happy Shopping
                         </Typography>
-                        <Link variant="subtitle1" href="#">
-                            {post.linkText}
-                        </Link>
+
                     </div>
                 </Grid>
             </Grid>
