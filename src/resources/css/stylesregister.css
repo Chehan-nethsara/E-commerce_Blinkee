@@ -1,0 +1,25 @@
+.outerContainer{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.innerContainer{
+    border: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 10px 10px #dadada;
+}
+
+.background{
+    background-image: url("../images/register.jpg");
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.formContainer{
+    padding: 50px;
+    text-align: left;
+}

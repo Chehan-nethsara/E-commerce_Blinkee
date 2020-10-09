@@ -9,7 +9,11 @@ import cart from "./component/cart";
 import about_us from "./component/about_us";
 import product from "./component/product";
 import productPage from "./component/productPage";
+
 import cartPage from "./component/cartPage";
+
+import register from "./component/register";
+
 
 function App() {
   return (
@@ -23,7 +27,11 @@ function App() {
         <Route exact path= '/about_us' component={ about_us } />
         <Route exact path= '/product' component={product} />
         <Route exact path= '/productPage' component={productPage} />
+
         <Route exact path= '/cartPage' component={cartPage} />
+
+
+        <Route exact path= '/register' component={ register } />
 
         <Route exact path='/contactus' component={ Contactus } />
 
