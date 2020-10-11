@@ -14,21 +14,17 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Navbar from './navbar';
 import Container from '@material-ui/core/Container';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
+import ButtonBase from "@material-ui/core/ButtonBase";
+import image_cartPage_1 from "../resources/images/image_cartPage_1.jpg";
+import PropTypes from 'prop-types';
+import withWidth from '@material-ui/core/withWidth';
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
 
-import IconButton from '@material-ui/core/IconButton';
-
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 
 
@@ -51,14 +47,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(4),
 
     },
-    image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    },
+
     paper: {
         margin: theme.spacing(8, 4),
         display: 'flex',
@@ -91,11 +80,109 @@ const useStyles = makeStyles((theme) => ({
         transform: 'rotate(180deg)',
     },
 
+
+
+    image: {
+        position: 'relative',
+        height: 100,
+        [theme.breakpoints.down('xs')]: {
+            width: '100% !important', // Overrides inline-style
+            height: 100,
+        },
+        '&:hover, &$focusVisible': {
+            zIndex: 1,
+            '& $imageBackdrop': {
+                opacity: 0.15,
+            },
+            '& $imageMarked': {
+                opacity: 0,
+            },
+            '& $imageTitle': {
+                border: '4px solid currentColor',
+            },
+        },
+    },
+    focusVisible: {},
+    imageButton: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: theme.palette.common.white,
+    },
+    imageSrc: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 40%',
+    },
+    imageBackdrop: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundColor: theme.palette.common.black,
+        opacity: 0.4,
+        transition: theme.transitions.create('opacity'),
+    },
+    imageTitle: {
+        position: 'relative',
+        padding: `${theme.spacing(3)}px ${theme.spacing(4)}px ${theme.spacing(2) + 6}px`,
+    },
+    imageMarked: {
+        height: 3,
+        width: 18,
+        backgroundColor: theme.palette.common.white,
+        position: 'absolute',
+        bottom: -2,
+        left: 'calc(50% - 9px)',
+        transition: theme.transitions.create('opacity'),
+    },
+
+    margin:{
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(4),
+        marginRight: theme.spacing(7),
+
+    },
+    buttons: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(10),
+        marginRight: theme.spacing(7),
+    },
 }));
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            // Purple and green play nicely together.
+            main: purple[500],
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: '#11cb5f',
+        },
+    },
+});
+const components = {
+    sm: 'em',
+    md: 'u',
+    lg: 'del',
+};
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
-
+const message = `Rating & Reviews of Product. `;
+const messagee = `This product has no reviews. Let other know what do you think and be the first to write a review `;
+const messages = `Quections about the product `;
+const messagess = `There are no quection yet. ASk the seller now and their answer will show here. `;
 export default function SignInSide() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -113,71 +200,83 @@ export default function SignInSide() {
             <CssBaseline />
 
             <Grid item xs={false} sm={4} md={7} component={Paper} elevation={5} square >
+                <Paper elevation={3} />
+                <Grid container spacing={0}>
+                    <Grid item>
+                        <ButtonBase className={classes.image}>
+                            <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
+                        </ButtonBase>
+                    </Grid>
+                    <div style={{ width: 200 }}>
+                        <Box component="div" my={2} whiteSpace="nowrap" bgcolor="background.paper">
+                            White Space Nowrap. White Space Nowrap.
+                        </Box>
+                        <Box component="div" my={2} whiteSpace="normal" bgcolor="background.paper">
+                            White Space Normal. White Space Normal.
+                        </Box>
+                        <Box color="info.main">info.main</Box>
+                        <Box color="error.main">error.main</Box>
 
-                <Card className={classes.root}>
-                    <CardHeader
-                        title="Shrimp and Chorizo Paella"
-                        subheader="September 14, 2016"
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image="/static/images/cards/paella.jpg"
-                        title="Paella dish"
-                    />
-
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon />
-                        </IconButton>
-                        <IconButton aria-label="share">
-                            <ShareIcon />
-                        </IconButton>
-
-                    </CardActions>
-
-                </Card>
+                        <Typography component="div">
+                            <Box textAlign="justify" m={1}>
+                                Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.
+                                Donec sed odio operae, eu vulputate felis rhoncus.
+                            </Box>
+                            <Box textAlign="left" m={1}>
+                                Left aligned text.
+                            </Box>
+                            <Box textAlign="center" m={1}>
+                                Center aligned text.
+                            </Box>
+                            <Box textAlign="right" m={1}>
+                                Right aligned text.
+                            </Box>
+                        </Typography>
+                    </div>
+                </Grid>
             </Grid>
+
+
 
                 <Grid item xs={12} sm={8} md={4} component={Paper} elevation={5} square>
                 <div className={classes.paper}>
                     <Paper elevation={3} />
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
+
+
+
+                    <Typography component="div">
+                        <Box fontStyle="normal" m={1}>
+                            Normal font style.
+                        </Box>
+                        <Box fontStyle="italic" m={1}>
+                            Italic font Style.
+                        </Box>
+                        <Box fontStyle="oblique" m={1}>
+                            Oblique font style.
+                        </Box>
                     </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
 
 
+                    <ThemeProvider theme={theme}>
+                        <Button color="primary">Primary</Button>
+                        <Button color="secondary">Secondary</Button>
+                    </ThemeProvider>
 
-
-
-                    </form>
                 </div>
 
             </Grid>
 
+
             <div className={classes.root}>
                 <Paper className={classes.paper}>
                     <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={2}>
+                    <Grid container wrap="nowrap" spacing={10}>
                         <Grid item>
-                            <Avatar>W</Avatar>
+
                         </Grid>
                         <Grid item xs zeroMinWidth>
                             <Typography noWrap>{message}</Typography>
+                            <Typography noWrap>{messagee}</Typography>
                         </Grid>
                     </Grid>
                 </Paper>
@@ -185,24 +284,23 @@ export default function SignInSide() {
                     <Paper elevation={3} />
                     <Grid container wrap="nowrap" spacing={2}>
                         <Grid item>
-                            <Avatar>W</Avatar>
+
                         </Grid>
                         <Grid item xs>
-                            <Typography noWrap>{message}</Typography>
+                            <Typography noWrap>{messages}</Typography>
+                            <FormControl className={classes.margin}>
+                                <InputLabel htmlFor="demo-customized-textbox"></InputLabel>
+
+                                <TextField id="outlined-basic" label="Enter coupon code" variant="outlined" />
+                            </FormControl>
+                            <Button variant="contained" color="primary" className={classes.buttons}>
+                                Apply
+                            </Button>
+                            <Typography noWrap>{messagess}</Typography>
                         </Grid>
                     </Grid>
                 </Paper>
-                <Paper className={classes.paper}>
-                    <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={2}>
-                        <Grid item>
-                            <Avatar>W</Avatar>
-                        </Grid>
-                        <Grid item xs>
-                            <Typography>{message}</Typography>
-                        </Grid>
-                    </Grid>
-                </Paper>
+
             </div>
         </Grid>
         </Container>
