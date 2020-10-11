@@ -11,7 +11,7 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles , withStyles} from '@material-ui/core/styles';
 import Navbar from './navbar';
 import Container from '@material-ui/core/Container';
 import clsx from 'clsx';
@@ -29,21 +29,31 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-
-
 import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionActions from '@material-ui/core/AccordionActions';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Chip from '@material-ui/core/Chip';
 
-import Divider from '@material-ui/core/Divider';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import InputBase from '@material-ui/core/InputBase';
+
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import List from "@material-ui/core/List";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
-
-
+function preventDefault(event) {
+    event.preventDefault();
+}
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
@@ -56,16 +66,60 @@ function Copyright() {
         </Typography>
     );
 }
-const cards = [1];
-const useStyles = makeStyles((theme) => ({
-    root: {
-        height: '100vh',
-        margin: theme.spacing(4),
+const products = [
+    { name: 'My shopping cart ', desc: '', price: '(1 item)' },
+    { name: 'Subtotal >', desc: '', price: '$3.45' },
 
+];
+const cards = [1];
+const BootstrapInput = withStyles((theme) => ({
+    root: {
+        'label + &': {
+            marginTop: theme.spacing(3),
+        },
+    },
+    input: {
+        borderRadius: 4,
+        position: 'relative',
+        backgroundColor: theme.palette.background.paper,
+        border: '1px solid #ced4da',
+        fontSize: 16,
+        padding: '10px 26px 10px 12px',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:focus': {
+            borderRadius: 4,
+            borderColor: '#80bdff',
+            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        },
+    },
+}))(InputBase);
+const useStyles = makeStyles((theme) => ({
+
+    root: {
+        display: 'flex',
+        '& > *': {
+            margin: theme.spacing(3),
+            width:'100vh',
+            height: '100vh',
+        },
     },
 
+
     paper: {
-        margin: theme.spacing(8, 4),
+        margin: theme.spacing(4, 4),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -73,13 +127,14 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
         margin: theme.spacing(2),
         backgroundColor: theme.palette.secondary.main,
+        marginLeft:'auto',
     },
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '10%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(1, 0, 1),
     },
     media: {
         height: 0,
@@ -107,8 +162,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     cardGrid: {
-        paddingTop: theme.spacing(5),
-        paddingBottom: theme.spacing(5),
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
     },
     heading: {
         fontSize: theme.typography.pxToRem(15),
@@ -122,24 +177,29 @@ const useStyles = makeStyles((theme) => ({
         height: 20,
         width: 20,
     },
-    details: {
-        alignItems: 'center',
-    },
-    column: {
-        flexBasis: '33.33%',
-    },
-    helper: {
-        borderLeft: `2px solid ${theme.palette.divider}`,
-        padding: theme.spacing(1, 2),
-    },
-    link: {
-        color: theme.palette.primary.main,
-        textDecoration: 'none',
-        '&:hover': {
-            textDecoration: 'underline',
-        },
-    },
 
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(0),
+        marginRight: theme.spacing(10),
+    },
+    buttons: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(10),
+        marginRight: theme.spacing(7),
+    },
+    margin:{
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(4),
+        marginRight: theme.spacing(7),
+
+    }
 }));
 
 const message = `Truncation should be conditionally applicable on this long line of text
@@ -156,117 +216,167 @@ export default function SignInSide() {
     return (
         <Container  component="main" maxWidth="full">
             <Navbar/>
-            <Container  component="main" maxWidth="full">
+            <Container  component="main" maxWidth="full" color="default" >
 
 
-                <Grid container component="main" className={classes.root}>
+                <Grid container component="main" className={classes.root} >
                     <CssBaseline />
 
-                    <Grid item xs={false} sm={4} md={7} component={Paper} elevation={5} square >
+                    <Grid item xs={false} sm={4} md={7} component={Paper} elevation={1} square >
 
-                        <div className={classes.paper}>
-                            <Paper elevation={3} />
 
-                            <Card >
-                                <CardContent>
-                            <form className={classes.form} noValidate>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                   Shopping Cart
-                                </Typography>
-                            </form>
-                                </CardContent>
-                            </Card>
 
-                        </div>
-<div>
-                                <Card >
-                                    <CardContent>
-                                <form className={classes.form} noValidate>
-                                    <Typography variant="body2" color="textSecondary" component="p">
-                                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                        across all continents except Antarctica
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                            <Paper elevation={0} />
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Shopping Cart
                                     </Typography>
-                                </form>
-                                    </CardContent>
-                                </Card>
+                                </Toolbar>
+                                <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
 
-</div>
-                            <div className={classes.paper}>
-                                <Paper elevation={3} />
-                                <Card >
-                                    <CardContent>
-                                        <form className={classes.form} noValidate>
-                                            <Typography variant="body2" color="textSecondary" component="p">
-                                                Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                                across all continents except Antarctica
-                                            </Typography>
-                                        </form>
-                                    </CardContent>
-                                </Card>
-                            </div>
+                                    <Paper elevation={0} />
+                                <Accordion>
+
+                                    <AccordionSummary
+                                        expandIcon={<DeleteIcon/>}
+                                        aria-label="Expand"
+                                        aria-controls="additional-actions1-content"
+                                        id="additional-actions1-header"
+                                    >
+                                        <FormControlLabel
+                                            aria-label="Acknowledge"
+                                            onClick={(event) => event.stopPropagation()}
+                                            onFocus={(event) => event.stopPropagation()}
+                                            control={<Checkbox />}
+                                            label="Select All"
+                                        />
+                                    </AccordionSummary>
+
+                                </Accordion>
+                                </Grid>
+                            </AppBar>
+
+                        </Grid>
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                            <Paper elevation={0} />
+                        </Grid>
+
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+                            <Paper elevation={0} />
+                        <Accordion>
+                            <AccordionSummary>
+                                <FormControlLabel
+                                    aria-label="Acknowledge"
+                                    onClick={(event) => event.stopPropagation()}
+                                    onFocus={(event) => event.stopPropagation()}
+                                    control={<Checkbox />}
+                                    label="Product"
+                                />
+                            </AccordionSummary>
+                        </Accordion>
+                        </Grid>
+
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+                            <Paper elevation={0} />
+                            <Accordion>
+                                <AccordionSummary>
+                                    <FormControlLabel
+                                        aria-label="Acknowledge"
+                                        onClick={(event) => event.stopPropagation()}
+                                        onFocus={(event) => event.stopPropagation()}
+                                        control={<Checkbox />}
+                                        label="Product"
+                                    />
+                                </AccordionSummary>
+                            </Accordion>
+                        </Grid>
 
 
-                       
                     </Grid>
 
 
 
 
 
-                    <Grid item xs={12} sm={8} md={4} component={Paper} elevation={5} square>
+                    <Grid item xs={false} sm={4} md={4} component={Paper} elevation={1} square>
+                        <React.Fragment>
+                            <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
 
-                        <div className={classes.paper}>
-                            <Paper elevation={3} />
-
-                            <Card >
-                                <CardContent>
-                                    <form className={classes.form} noValidate>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                            Shopping Cart
+                                <Paper elevation={0} />
+                                <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                    <Toolbar className={classes.toolbar}>
+                                        <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                                            Order Summary
                                         </Typography>
-                                    </form>
-                                </CardContent>
-                            </Card>
-                        </div>
 
-                            <div className={classes.root}>
-                            <Accordion defaultExpanded>
-                                <AccordionSummary
-                                    expandIcon={<ExpandMoreIcon />}
-                                    aria-controls="panel1c-content"
-                                    id="panel1c-header"
-                                >
-                                    <div className={classes.column}>
-                                        <Typography className={classes.heading}>Location</Typography>
-                                    </div>
-                                    <div className={classes.column}>
-                                        <Typography className={classes.secondaryHeading}>Select trip destination</Typography>
-                                    </div>
-                                </AccordionSummary>
-                                <AccordionDetails className={classes.details}>
-                                    <div className={classes.column} />
-                                    <div className={classes.column}>
-                                        <Chip label="Barbados" onDelete={() => {}} />
-                                    </div>
-                                    <div className={clsx(classes.column, classes.helper)}>
-                                        <Typography variant="caption">
-                                            Select your destination of choice
-                                            <br />
-                                            <a href="#secondary-heading-and-columns" className={classes.link}>
-                                                Learn more
-                                            </a>
-                                        </Typography>
-                                    </div>
-                                </AccordionDetails>
-                                <Divider />
-                                <AccordionActions>
-                                    <Button size="small">Cancel</Button>
-                                    <Button size="small" color="primary">
-                                        Save
+                                    </Toolbar>
+                                </AppBar>
+
+                            </Grid>
+
+
+                                    <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                                        <Paper elevation={0} />
+                                        <Accordion>
+                                            <AccordionSummary
+                                                expandIcon={<ExpandMoreIcon />}
+                                                aria-controls="panel1a-content"
+                                                id="panel1a-header"
+
+                                            >
+                                                <Typography className={classes.heading}>Enter Coupon</Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                <FormControl className={classes.margin}>
+                                                    <InputLabel htmlFor="demo-customized-textbox"></InputLabel>
+
+                                                    <TextField id="outlined-basic" label="Enter coupon code" variant="outlined" />
+                                                </FormControl>
+                                                <Button variant="contained" color="primary" className={classes.buttons}>
+                                                    Apply
+                                                </Button>
+                                            </AccordionDetails>
+                                        </Accordion>
+                                    </Grid>
+
+
+
+
+                            <React.Fragment>
+                                <List disablePadding>
+                                    {products.map((product) => (
+                                        <ListItem className={classes.listItem} key={product.name}>
+                                            <ListItemText primary={product.name} secondary={product.desc} />
+                                            <Typography variant="body2">{product.price}</Typography>
+                                        </ListItem>
+                                    ))}
+                                    <ListItem className={classes.listItem}>
+                                        <ListItemText primary="Total > " />
+                                        <Box color="info.main">$100</Box>
+                                    </ListItem>
+                                </List>
+                                <div className={classes.buttons}>
+
+
+                                    <Button
+
+                                        variant="contained"
+                                        color="secondary"
+
+                                        className={classes.button}
+                                    >
+                                        CHECKOUT
                                     </Button>
-                                </AccordionActions>
-                            </Accordion>
-                        </div>
+                                </div>
+
+                            </React.Fragment>
+
+                        </React.Fragment>
 
                     </Grid>
 
