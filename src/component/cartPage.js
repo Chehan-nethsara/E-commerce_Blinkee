@@ -9,6 +9,12 @@ import Link from '@material-ui/core/Link';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Paper from "@material-ui/core/Paper";
 import CloseIcon from '@material-ui/icons/Close';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 
 
 function Copyright() {
@@ -24,37 +30,29 @@ function Copyright() {
     );
 }
 
+const products = [
+    { name: 'My shopping cart ', desc: '', price: '(1 item)' },
+    { name: 'Subtotal >', desc: '', price: '$3.45' },
 
-const images = [
-    {
-        url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Breakfast',
-        width: '40%',
-    },
-    {
-        url: '/static/images/grid-list/burgers.jpg',
-        title: 'Burgers',
-        width: '30%',
-    },
-    {
-        url: '/static/images/grid-list/camera.jpg',
-        title: 'Camera',
-        width: '30%',
-    },
 ];
 
-
 const drawerWidth = 240;
+const cards = [1, 2, 3, 4, 5, 6, 7, 8];
+
+
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexWrap: 'wrap',
         minWidth: 300,
         width: '100%',
-        margin: theme.spacing(5),
+        margin: theme.spacing(false),
     },
+
     paper: {
-        margin: theme.spacing(0, 0),
+        margin: theme.spacing(10, 10),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -65,28 +63,20 @@ const useStyles = makeStyles((theme) => ({
             flexShrink: 0,
         },
     },
-    appBar: {
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-    },
+
     menuButton: {
         marginRight: theme.spacing(1),
         [theme.breakpoints.up('sm')]: {
             display: 'none',
         },
     },
-    avatar: {
-        margin: theme.spacing(5),
-        backgroundColor: theme.palette.secondary.main,
-    },
+
     form: {
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(5),
     },
     submit: {
-        margin: theme.spacing(3, 0, 2),
+        margin: theme.spacing(3, 2, 2),
     },
 
     // necessary for content to be below app bar
@@ -96,21 +86,16 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(5),
+        padding: theme.spacing(20),
     },
     icon: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(10),
     },
-    heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
-    },
-    heroButtons: {
-        marginTop: theme.spacing(0),
-    },
+
+
     cardGrid: {
-        paddingTop: theme.spacing(0),
-        paddingBottom: theme.spacing(0),
+        paddingTop: theme.spacing(5),
+        paddingBottom: theme.spacing(5),
     },
     card: {
         height: '100%',
@@ -177,7 +162,7 @@ const useStyles = makeStyles((theme) => ({
     },
     imageTitle: {
         position: 'relative',
-        padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
+        padding: `${theme.spacing(3)}px ${theme.spacing(4)}px ${theme.spacing(2) + 6}px`,
     },
     imageMarked: {
         height: 3,
@@ -187,6 +172,28 @@ const useStyles = makeStyles((theme) => ({
         bottom: -2,
         left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
+    },
+    listItem: {
+        padding: theme.spacing(1, 2),
+    },
+    total: {
+        fontWeight: 700,
+    },
+    title: {
+        marginTop: theme.spacing(2),
+
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+
+
+    },
+    button: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(0),
+        marginRight: theme.spacing(20),
     },
 }));
 
@@ -213,17 +220,17 @@ function ResponsiveDrawer(props) {
 
     return (
 
-        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={5} square >
+        <Grid item xs={10} sm={12} md={12} component={Paper} elevation={5} square >
             <CloseIcon  style={{ cursor: 'pointer' }} >   </CloseIcon>
             <div className={classes.root}>
             <CssBaseline />
 
 
-                <Grid item xs={false} sm={4} md={6} component={Paper} elevation={5} square >
+                <Grid item xs={false} sm={4} md={6} component={Paper} elevation={2} square >
 
-                    <div >
+
                         <Paper elevation={3} />
-                        <Paper className={classes.paper}>
+
                             <Grid container spacing={0}>
                                 <Grid item>
                                     <ButtonBase className={classes.image}>
@@ -231,14 +238,16 @@ function ResponsiveDrawer(props) {
                                     </ButtonBase>
                                 </Grid>
 
-                                <Grid item xs={12} sm container>
-                                    <Grid item xs container direction="column" spacing={2}>
+                                <Grid item xs={10} sm container>
+                                    <Grid item xs container direction="column" spacing={4}>
                                         <Grid item xs>
                                             <Typography gutterBottom variant="subtitle1">
-                                                Standard license
+                                                1 New item(s) have added to your cart
                                             </Typography>
+                                        </Grid>
+                                        <Grid item xs>
                                             <Typography variant="body2" gutterBottom>
-                                                Full resolution 1920x1080 • JPEG
+                                                RS 1000
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary">
                                                 ID: 1030114
@@ -250,83 +259,81 @@ function ResponsiveDrawer(props) {
                                             </Typography>
                                         </Grid>
                                     </Grid>
-                                    <Grid item>
-                                        <Typography variant="subtitle1">$19.00</Typography>
+                                    <Grid item >
+                                        <Typography variant="subtitle1"></Typography>
+                                    </Grid>
+                                    <Grid item >
+                                        <Typography variant="subtitle1"></Typography>
                                     </Grid>
                                 </Grid>
                             </Grid>
-                        </Paper>
-                    </div>
+
+
 
                 </Grid>
 
 
 
-                <Grid item xs={12} sm={8} md={6} component={Paper} elevation={5} square>
-                    <div className={classes.paper}>
+                <Grid item xs={false} sm={4} md={6} component={Paper} elevation={2} square>
+
                         <Paper elevation={3} />
 
-                                <form className={classes.form} noValidate>
-                                    <Typography variant="body1" color="textSecondary" component="p">
-                                       My Shopping Cart   (1 Item)
-                                    </Typography>
-                                </form>
-
-                    </div>
-                </Grid>
-
-
-
-                <Grid item xs={10} sm={6} md={12} component={Paper} elevation={5} square >
-                    <div className={classes.paper}>
-                        <Paper elevation={3} />
-                        <main className={classes.content}>
-                            <div className={classes.toolbar} />
-                            <form className={classes.form} noValidate>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    My Shopping Cart   (1 Item)
-                                </Typography>
-                            </form>
-                            {images.map((image) => (
-                                <ButtonBase
-                                    focusRipple
-                                    key={image.title}
-                                    className={classes.image}
-                                    focusVisibleClassName={classes.focusVisible}
-                                    style={{
-                                        width: image.width,
-                                    }}
-                                >
-          <span
-              className={classes.imageSrc}
-              style={{
-                  backgroundImage: `url(${image.url})`,
-              }}
-          />
-                                    <span className={classes.imageBackdrop} />
-                                    <span className={classes.imageButton}>
-            <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                className={classes.imageTitle}
-            >
-              {image.title}
-                <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-                                </ButtonBase>
+                    <React.Fragment>
+                        <List disablePadding>
+                            {products.map((product) => (
+                                <ListItem className={classes.listItem} key={product.name}>
+                                    <ListItemText primary={product.name} secondary={product.desc} />
+                                    <Typography variant="body2">{product.price}</Typography>
+                                </ListItem>
                             ))}
+                            <ListItem className={classes.listItem}>
+                                <ListItemText primary="Total > " />
+                                <Typography variant="subtitle1" className={classes.total}>
+                                    $34.06
+                                </Typography>
+                            </ListItem>
+                        </List>
+                        <div className={classes.buttons}>
 
+                                <Button  className={classes.button} variant="outlined" color="secondary" >
+                                    Go To Cart
+                                </Button>
 
+                            <Button
 
+                                variant="contained"
+                                color="secondary"
 
-                        </main>
-                    </div>
+                                className={classes.button}
+                            >
+CHECKOUT
+                            </Button>
+                        </div>
 
+                    </React.Fragment>
 
 
                 </Grid>
+
+                <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                    <Paper elevation={0} />
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Just for you
+                                    </Typography>
+
+                                </Toolbar>
+                            </AppBar>
+
+                </Grid>
+
+
+
+
+
+
 
 
 
