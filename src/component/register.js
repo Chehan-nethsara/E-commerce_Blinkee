@@ -74,13 +74,12 @@ const RegisterComponent = (props) => {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="inputAddress2">Address 2*</label>
+                                    <label htmlFor="inputAddress2">Address 2</label>
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="inputAddress2"
                                         placeholder="Apartment, Studio, or Floor"
-                                        required
                                     />
                                 </div>
                                 <div className="form-row">
@@ -125,6 +124,7 @@ const RegisterComponent = (props) => {
                                     Create
                                 </button>
                             </form>
+
                         </div>
                     </div>
                 </div>
