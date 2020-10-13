@@ -1,33 +1,62 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-
-
-import MainFeaturedPost from './AboutUs/MainFeaturedPost';
-import FeaturedPost from './AboutUs/FeaturedPost';
-import Main from './AboutUs/Main';
-import Sidebar from './AboutUs/Sidebar';
-import image_about_us from '../resources/images/image_about_us.jpg';
-import Navbar from "./navbar";
+import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Grid from '@material-ui/core/Grid';
 import StarIcon from '@material-ui/icons/StarBorder';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
-
-import Box from '@material-ui/core/Box'
-
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import navbar from "./navbar";
+import Navbar from "./navbar";
 
 const useStyles = makeStyles((theme) => ({
-    mainGrid: {
-        marginTop: theme.spacing(3),
+    '@global': {
+        ul: {
+            margin: 0,
+            padding: 0,
+            listStyle: 'none',
+        },
+    },
+    appBar: {
+        borderBottom: `1px solid ${theme.palette.divider}`,
+    },
+
+    toolbarTitle: {
+        flexGrow: 1,
+    },
+    link: {
+        margin: theme.spacing(1, 1.5),
+    },
+    heroContent: {
+        padding: theme.spacing(8, 0, 6),
+    },
+    cardHeader: {
+        backgroundColor:
+            theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+    },
+    cardPricing: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'baseline',
+        marginBottom: theme.spacing(2),
+    },
+    footer: {
+        borderTop: `1px solid ${theme.palette.divider}`,
+        marginTop: theme.spacing(8),
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(3),
+        [theme.breakpoints.up('sm')]: {
+            paddingTop: theme.spacing(6),
+            paddingBottom: theme.spacing(6),
+        },
     },
 }));
 
@@ -64,71 +93,37 @@ const tiers = [
         buttonText: 'Contact us',
         buttonVariant: 'outlined',
     },
-];
-
-const mainFeaturedPost = {
-    title: 'Title of a longer featured blog post',
-    description:
-        "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-    image: 'image_about_us',
-    imgText: 'main image description',
-
-};
-
-const featuredPosts = [
     {
-        title: 'Featured post',
-        date: 'Nov 12',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: 'https://source.unsplash.com/random',
-        imageText: 'Image Text',
-    },
-    {
-        title: 'Post title',
-        date: 'Nov 11',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
-        image: 'https://source.unsplash.com/random',
-        imageText: 'Image Text',
+        title: 'Enterprise',
+        price: '30',
+        description: [
+            '50 users included',
+            '30 GB of storage',
+            'Help center access',
+            'Phone & email support',
+        ],
+        buttonText: 'Contact us',
+        buttonVariant: 'outlined',
     },
 ];
 
-
-
-
-export default function Blog() {
+export default function Pricing() {
     const classes = useStyles();
-
-
-
     return (
         <React.Fragment>
             <CssBaseline />
-            <Navbar/>
-            <Container maxWidth="lg">
-                
-                <main>
-                    <MainFeaturedPost post={mainFeaturedPost} />
-                    <Grid container spacing={4}>
-                        {featuredPosts.map((post) => (
-                            <FeaturedPost key={post.title} post={post} />
-                        ))}
-                    </Grid>
-
-                </main>
-
-            </Container>
-
-
-            <Container maxWidth="lg">
-            <Grid container spacing={4}>
+            <Container>
+                <Navbar/>
+            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+            </AppBar>
+            {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
-                <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
-                    About Blinkee
+                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                    Pricing
                 </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" component="p">
-                   Magic Mattr's Brilliant Blinkees provides exciting glow in the dark toys , flashing, jewelary,
+                    Quickly build an effective pricing table for your potential customers with this layout.
+                    It&apos;s built with default Material-UI components with little customization.
                 </Typography>
             </Container>
             {/* End hero unit */}
@@ -164,7 +159,7 @@ export default function Blog() {
                                     </ul>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth variant={tier.buttonVariant} color="primary">
+                                    <Button fullWidth variant={tier.buttonVariant} color="secondary">
                                         {tier.buttonText}
                                     </Button>
                                 </CardActions>
@@ -173,8 +168,7 @@ export default function Blog() {
                     ))}
                 </Grid>
             </Container>
-            </Grid>
-            </Container>
+        </Container>
         </React.Fragment>
     );
 }
