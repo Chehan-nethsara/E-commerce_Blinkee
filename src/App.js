@@ -9,6 +9,7 @@ import cart from "./component/cart";
 import about_us from "./component/about_us";
 import product from "./component/product";
 import productPage from "./component/productPage";
+import FooterMain from "./component/Footer/footer";
 
 
 import cartPage from "./component/cartPage";
@@ -40,6 +41,8 @@ function App() {
 
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
+
+        <Route exact path='/footer' component={ FooterMain } />
 
       </Switch>
 
