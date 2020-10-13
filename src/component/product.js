@@ -54,7 +54,7 @@ function Copyright() {
 }
 
 const drawerWidth = 240;
-const cards = [1, 2, 3, 4, 5, 6, 7, 8];
+const cards = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12];
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -119,6 +119,10 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
         marginTop: theme.spacing(2),
     },
+    ima:{
+        width:30,
+        height: 30,
+}
 }));
 
 function ResponsiveDrawer(props) {
@@ -163,14 +167,14 @@ function ResponsiveDrawer(props) {
             <Container  component="main" maxWidth="full">
 
                     <Grid container >
-                        <GridItem xs={1} sm={10} xs={25} >
+                        <GridItem xs={false} sm={10} xs={30} >
                             <Card>
                                 <Slider {...settings}>
                                     <div>
-                                        <img
+                                        <img className={classes.imag}
                                             src={image_cart_1}
                                             alt="First slide"
-                                            className="slick-image"
+
                                         />
                                         <div className="slick-caption">
                                             {/*<h4>*/}
@@ -180,10 +184,10 @@ function ResponsiveDrawer(props) {
                                         </div>
                                     </div>
                                     <div>
-                                        <img
+                                        <img className={classes.imag}
                                             src={image_cart_2}
                                             alt="Second slide"
-                                            className="slick-image"
+
                                         />
                                         <div className="slick-caption">
                                             {/*<h4>*/}
@@ -193,10 +197,10 @@ function ResponsiveDrawer(props) {
                                         </div>
                                     </div>
                                     <div>
-                                        <img
+                                        <img className={classes.imag}
                                             src={image_cart_4}
                                             alt="Third slide"
-                                            className="slick-image"
+
                                         />
                                         <div className="slick-caption">
                                             {/*<h4>*/}

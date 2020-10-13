@@ -24,7 +24,19 @@ import withWidth from '@material-ui/core/withWidth';
 import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import IconButton from '@material-ui/core/IconButton';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import Forward5Icon from '@material-ui/icons/Forward5';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import ChatIcon from '@material-ui/icons/Chat';
+import Rating from '@material-ui/lab/Rating';
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 
 
@@ -47,9 +59,14 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(4),
 
     },
+    roots: {
+        height: '100vh',
+        margin: theme.spacing(3),
+
+    },
 
     paper: {
-        margin: theme.spacing(8, 4),
+        margin: theme.spacing(3, 0),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -84,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 
     image: {
         position: 'relative',
-        height: 100,
+        height: 270,
         [theme.breakpoints.down('xs')]: {
             width: '100% !important', // Overrides inline-style
             height: 100,
@@ -92,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
         '&:hover, &$focusVisible': {
             zIndex: 1,
             '& $imageBackdrop': {
-                opacity: 0.15,
+                opacity: 0,
             },
             '& $imageMarked': {
                 opacity: 0,
@@ -150,15 +167,38 @@ const useStyles = makeStyles((theme) => ({
     margin:{
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(10),
-        marginLeft: theme.spacing(4),
-        marginRight: theme.spacing(7),
+        marginLeft: theme.spacing(6),
+        marginRight: theme.spacing(8),
+        width:500,
+        height:100,
 
     },
     buttons: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(10),
-        marginLeft: theme.spacing(10),
+        marginLeft: theme.spacing(12),
         marginRight: theme.spacing(7),
+        width:100,
+        height:50,
+    },
+    buttonss: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+width:500,
+        height:100,
+
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        marginLeft: theme.spacing(10),
+        marginRight: theme.spacing(1),
+    },
+    buttonsss: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        marginLeft: theme.spacing(10),
+        marginRight: theme.spacing(2),
     },
 }));
 const theme = createMuiTheme({
@@ -180,7 +220,7 @@ const components = {
 };
 
 const message = `Rating & Reviews of Product. `;
-const messagee = `This product has no reviews. Let other know what do you think and be the first to write a review `;
+const messagee = `This product has no reviews. Let other know what do you think and be the first to write a review   . `;
 const messages = `Quections about the product `;
 const messagess = `There are no quection yet. ASk the seller now and their answer will show here. `;
 export default function SignInSide() {
@@ -190,6 +230,7 @@ export default function SignInSide() {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const [value, setValue] = React.useState(2);
 
     return (
         <Container  component="main" maxWidth="full">
@@ -207,29 +248,64 @@ export default function SignInSide() {
                             <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
                         </ButtonBase>
                     </Grid>
-                    <div style={{ width: 200 }}>
-                        <Box component="div" my={2} whiteSpace="nowrap" bgcolor="background.paper">
-                            White Space Nowrap. White Space Nowrap.
+                    <div style={{ width: 300 }}>
+                        <Box component="fieldset" mb={2} borderColor="transparent">
+                        <Typography variant="h6" color="inherit" >
+                        Product Name
+                        </Typography>
                         </Box>
-                        <Box component="div" my={2} whiteSpace="normal" bgcolor="background.paper">
-                            White Space Normal. White Space Normal.
+                        <Box component="fieldset" mb={2} borderColor="transparent">
+                            <Typography component="legend"></Typography>
+                            <Rating name="read-only" value={null} size="small" readOnly />
                         </Box>
-                        <Box color="info.main">info.main</Box>
-                        <Box color="error.main">error.main</Box>
+
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+                            <Paper elevation={0} />
+                            <AccordionSummary
+
+                                aria-label="Expand"
+                                aria-controls="additional-actions1-content"
+                                id="additional-actions1-header"
+                            >
+                                <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                    Brand / More products
+                                </Box>
+                            </AccordionSummary>
+
+                        </Grid>
+
+                        <Typography component="legend" variant="h6">
+                        <Box color="info.main" textAlign="left">RS 3000</Box>
+                        </Typography>
+                        <Box color="error.main">27%</Box>
 
                         <Typography component="div">
                             <Box textAlign="justify" m={1}>
-                                Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum.
-                                Donec sed odio operae, eu vulputate felis rhoncus.
+                               Promotion
                             </Box>
                             <Box textAlign="left" m={1}>
-                                Left aligned text.
+                                Quntity
                             </Box>
                             <Box textAlign="center" m={1}>
-                                Center aligned text.
+                                <div className={classes.buttonss}>
+
+                                    <Button  className={classes.buttonsss} variant="outlined" color="secondary" >
+                                        Buy Now
+                                    </Button>
+
+                                    <Button
+
+                                        variant="contained"
+                                        color="secondary"
+
+                                        className={classes.button}
+                                    >
+                                        Add to cart
+                                    </Button>
+                                </div>
                             </Box>
                             <Box textAlign="right" m={1}>
-                                Right aligned text.
+
                             </Box>
                         </Typography>
                     </div>
@@ -239,55 +315,171 @@ export default function SignInSide() {
 
 
                 <Grid item xs={12} sm={8} md={4} component={Paper} elevation={5} square>
-                <div className={classes.paper}>
+
                     <Paper elevation={3} />
+                    <Grid container wrap="nowrap" spacing={0}>
+                    <AppBar position="static" color="default" elevation={2} className={classes.appBar}>
+                        <Toolbar className={classes.toolbar}>
+                            <Typography variant="h8" color="inherit" noWrap className={classes.toolbarTitle}>
+                                Delivery options
+                                <IconButton  color="inherit">
+                                    <ErrorOutlineIcon  />
+                                </IconButton>
+
+                                <form>
+                                    <IconButton  color="inherit">
+                                            <LocationOnIcon  />
+                                    </IconButton>
+                                   colombo 01 - fort
+                                </form>
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <AllInboxIcon />
+                                    </IconButton>
+                                    Home Delivery 3-5 days
+                                </form>
+
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <MonetizationOnIcon  />
+                                    </IconButton>
+
+                                    Cash on Deliver Available
+                                </form>
+
+                            </Typography>
+                            <Typography variant="h8" color="inherit"  icon={LocationOnIcon} noWrap className={classes.toolbarTitle}>
+
+                            </Typography>
 
 
+                        </Toolbar>
+                    </AppBar>
+                    </Grid>
+                        <Grid container wrap="nowrap" spacing={0}>
+                    <AppBar position="static" color="default" elevation={2} className={classes.appBar}>
+                        <Toolbar className={classes.toolbar}>
+                            <Typography variant="h7" color="inherit" noWrap className={classes.toolbarTitle}>
+                                Return & Warantity
+                                <IconButton  color="inherit">
+                                    <ErrorOutlineIcon  />
+                                </IconButton>
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <Forward5Icon  />
+                                    </IconButton>
 
-                    <Typography component="div">
-                        <Box fontStyle="normal" m={1}>
-                            Normal font style.
-                        </Box>
-                        <Box fontStyle="italic" m={1}>
-                            Italic font Style.
-                        </Box>
-                        <Box fontStyle="oblique" m={1}>
-                            Oblique font style.
-                        </Box>
-                    </Typography>
+                                    5 days Returns
+                                </form>
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <AssignmentReturnedIcon  />
+                                    </IconButton>
 
+                                    1 year Local seller waranty
+                                </form>
+                            </Typography>
+
+                        </Toolbar>
+                    </AppBar>
+                        </Grid>
 
                     <ThemeProvider theme={theme}>
-                        <Button color="primary">Primary</Button>
-                        <Button color="secondary">Secondary</Button>
+                        <Button color="primary">Go To Store</Button>
                     </ThemeProvider>
-
-                </div>
-
             </Grid>
 
 
-            <div className={classes.root}>
-                <Paper className={classes.paper}>
+
+            <div className={classes.roots}>
+                <Grid item xs={false} sm={5} md={12} component={Paper} elevation={5} square >
                     <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={10}>
+                    <Grid container wrap="nowrap" spacing={0}>
                         <Grid item>
 
                         </Grid>
                         <Grid item xs zeroMinWidth>
-                            <Typography noWrap>{message}</Typography>
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h7" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Rating & Reviews of Product
+                                    </Typography>
+
+                                </Toolbar>
+                            </AppBar>
+
+                            <div>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+
+                                </Box>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+
+                                </Box>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+
+                                </Box>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+                                </Box>
+
+                            </div>
                             <Typography noWrap>{messagee}</Typography>
                         </Grid>
                     </Grid>
-                </Paper>
+                </Grid>
+
+
+
                 <Paper className={classes.paper}>
                     <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={2}>
+                    <Grid container wrap="nowrap" spacing={0}>
                         <Grid item>
-
                         </Grid>
                         <Grid item xs>
-                            <Typography noWrap>{messages}</Typography>
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h7" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Quections about the product
+                                    </Typography>
+
+                                </Toolbar>
+                            </AppBar>
+
                             <FormControl className={classes.margin}>
                                 <InputLabel htmlFor="demo-customized-textbox"></InputLabel>
 
