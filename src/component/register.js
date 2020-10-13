@@ -120,7 +120,7 @@ const RegisterComponent = (props) => {
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" className="btn btn-primary">
+                                <button type="submit" className="btn btn-primary" >
                                     Create
                                 </button>
                             </form>
