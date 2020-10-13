@@ -119,7 +119,9 @@ export default function Blog() {
                 </main>
 
             </Container>
-
+        <br/>
+            <br/>
+            <br/>
 
             <Container maxWidth="lg">
             <Grid container spacing={4}>
@@ -131,8 +133,13 @@ export default function Blog() {
                    Magic Mattr's Brilliant Blinkees provides exciting glow in the dark toys , flashing, jewelary,
                 </Typography>
             </Container>
+                <br/>
+                <br/>
+                <br/>
             {/* End hero unit */}
             <Container maxWidth="md" component="main">
+                <br/>
+                <br/>
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
                         // Enterprise card is full width at sm breakpoint
