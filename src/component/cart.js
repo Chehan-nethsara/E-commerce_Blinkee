@@ -51,6 +51,13 @@ import Toolbar from "@material-ui/core/Toolbar";
 import DeleteIcon from '@material-ui/icons/Delete';
 import image_cartPage_1 from "../resources/images/image_cartPage_1.jpg";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import Footer from './Footer/footer';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 
 function preventDefault(event) {
@@ -69,7 +76,7 @@ function Copyright() {
     );
 }
 const products = [
-    { name: 'My shopping cart ', desc: '', price: '(1 item)' },
+    { name: 'Shipping ', desc: '', price: 'colombo 07 - fort' },
     { name: 'Subtotal >', desc: '', price: '$3.45' },
 
 ];
@@ -286,7 +293,15 @@ export default function SignInSide() {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const [open, setOpen] = React.useState(false);
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <Container  component="main" maxWidth="full">
             <Navbar/>
@@ -313,12 +328,45 @@ export default function SignInSide() {
                                 </Toolbar>
                                 <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
                                     <Paper elevation={2} />
+
+
                                     <AccordionSummary
                                         expandIcon={<DeleteIcon/>}
                                         aria-label="Expand"
                                         aria-controls="additional-actions1-content"
                                         id="additional-actions1-header"
                                     >
+                                        <Button
+                                            variant="contained"
+
+
+                                            expandIcon={ <DeleteIcon /> }
+                                            onClick={ handleClickOpen }
+                                        >
+
+                                        </Button>
+
+                                        <Dialog
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title">{"Remove from cart"}</DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    Are you sure you want to delete these item(s)?
+                                                </DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleClose} color="primary">
+                                                    CANCEL
+                                                </Button>
+                                                <Button onClick={handleClose} color="primary" autoFocus>
+                                                    REMOVE
+                                                </Button>
+                                            </DialogActions>
+                                        </Dialog>
                                         <FormControlLabel
                                             aria-label="Acknowledge"
                                             onClick={(event) => event.stopPropagation()}
@@ -326,12 +374,22 @@ export default function SignInSide() {
                                             control={<Checkbox />}
                                             label="Select All"
                                         />
-                                    </AccordionSummary>
 
+                                    </AccordionSummary>
                                 </Grid>
 
                             </AppBar>
 
+                        </Grid>
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                            <Paper elevation={0} />
+                            <Accordion>
+
+
+                                    <Typography className={classes.heading}>Preffered Delivery option</Typography>
+
+                            </Accordion>
                         </Grid>
 
                         <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
@@ -345,7 +403,21 @@ export default function SignInSide() {
                                     control={<Checkbox />}
                                     label="Product"
                                 />
+                                <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                    Brand / More products
+                                </Box>
 
+
+                                <Typography component="legend" variant="h6">
+                                    <Box color="info.main" textAlign="left">RS 3000</Box>
+                                </Typography>
+                                <Box color="error.main">27%</Box>
+
+                                <Typography component="div">
+                                    <Box textAlign="justify" m={1}>
+                                        Promotion
+                                    </Box>
+                                </Typography>
                             </AccordionSummary>
                             <Grid container spacing={0}>
                                 <Grid item>
@@ -354,6 +426,21 @@ export default function SignInSide() {
                                     </ButtonBase>
                                 </Grid>
                             </Grid>
+                            <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                Brand / More products
+                            </Box>
+
+
+                            <Typography component="legend" variant="h6">
+                                <Box color="info.main" textAlign="left">RS 3000</Box>
+                            </Typography>
+                            <Box color="error.main">27%</Box>
+
+                            <Typography component="div">
+                                <Box textAlign="justify" m={1}>
+                                    Promotion
+                                </Box>
+                            </Typography>
                         </Grid>
 
                         <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
@@ -466,6 +553,7 @@ export default function SignInSide() {
 
                 </Grid>
             </Container>
+            <Footer/>
         </Container>
     );
 }
