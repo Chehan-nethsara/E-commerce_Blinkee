@@ -10,13 +10,16 @@ import about_us from "./component/about_us";
 import product from "./component/product";
 import productPage from "./component/productPage";
 import checkout from "./component/checkout";
+import shippingpolicy from "./component/shippingpolicy";
+import custom from "./component/custom";
+
 
 function App() {
   return (
       <BrowserRouter>
     <div className="App">
       <Switch>
-        <Route exact path= '/home'component={ home } />
+        <Route exact path= '/home' component={ home } />
         <Route exact path='/navbar' component={ Navbar } />
 
         <Route exact path= '/cart' component={ cart } />
@@ -27,6 +30,9 @@ function App() {
         <Route exact path='/contactus' component={ Contactus } />
 
         <Route exact path='/checkout' component={ checkout } />
+        <Route exact path='/shippingpolicy' component={ shippingpolicy } />
+        <Route exact path='/custom' component={ custom } />
+
 
       </Switch>
 
