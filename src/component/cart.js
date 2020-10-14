@@ -49,6 +49,15 @@ import List from "@material-ui/core/List";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import DeleteIcon from '@material-ui/icons/Delete';
+import image_cartPage_1 from "../resources/images/image_cartPage_1.jpg";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Footer from './Footer/footer';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
 
 
 function preventDefault(event) {
@@ -67,7 +76,7 @@ function Copyright() {
     );
 }
 const products = [
-    { name: 'My shopping cart ', desc: '', price: '(1 item)' },
+    { name: 'Shipping ', desc: '', price: 'colombo 07 - fort' },
     { name: 'Subtotal >', desc: '', price: '$3.45' },
 
 ];
@@ -109,11 +118,13 @@ const BootstrapInput = withStyles((theme) => ({
 const useStyles = makeStyles((theme) => ({
 
     root: {
+        backgroundcolor:"primary",
         display: 'flex',
         '& > *': {
             margin: theme.spacing(3),
             width:'100vh',
             height: '100vh',
+
         },
     },
 
@@ -184,22 +195,92 @@ const useStyles = makeStyles((theme) => ({
     button: {
         marginTop: theme.spacing(3),
         marginBottom: theme.spacing(10),
-        marginLeft: theme.spacing(0),
-        marginRight: theme.spacing(10),
+        marginLeft: theme.spacing(false),
+        marginRight: theme.spacing(37),
+        height: 40,
+        width: 451.7,
+        padding: '0 30px',
     },
     buttons: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(10),
-        marginLeft: theme.spacing(10),
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(1),
         marginRight: theme.spacing(7),
     },
     margin:{
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(10),
-        marginLeft: theme.spacing(4),
-        marginRight: theme.spacing(7),
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(10),
+        height: 27,
+        width: 805,
+    },
+    image: {
+        position: 'relative',
+        height: 200,
+        width:300,
 
-    }
+        [theme.breakpoints.down('xs')]: {
+            width: '100% !important', // Overrides inline-style
+            height: 100,
+        },
+        '&:hover, &$focusVisible': {
+            zIndex: 1,
+            '& $imageBackdrop': {
+                opacity: 0.15,
+            },
+            '& $imageMarked': {
+                opacity: 0,
+            },
+            '& $imageTitle': {
+                border: '4px solid currentColor',
+            },
+        },
+    },
+    focusVisible: {},
+    imageButton: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: theme.palette.common.white,
+    },
+    imageSrc: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 40%',
+    },
+    imageBackdrop: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundColor: theme.palette.common.black,
+        opacity: 0.4,
+        transition: theme.transitions.create('opacity'),
+    },
+    imageTitle: {
+        position: 'relative',
+        padding: `${theme.spacing(3)}px ${theme.spacing(4)}px ${theme.spacing(2) + 6}px`,
+    },
+    imageMarked: {
+        height: 3,
+        width: 18,
+        backgroundColor: theme.palette.common.white,
+        position: 'absolute',
+        bottom: -2,
+        left: 'calc(50% - 9px)',
+        transition: theme.transitions.create('opacity'),
+    },
 }));
 
 const message = `Truncation should be conditionally applicable on this long line of text
@@ -212,7 +293,15 @@ export default function SignInSide() {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const [open, setOpen] = React.useState(false);
 
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <Container  component="main" maxWidth="full">
             <Navbar/>
@@ -234,11 +323,12 @@ export default function SignInSide() {
                                     <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
                                         Shopping Cart
                                     </Typography>
-                                </Toolbar>
-                                <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
 
-                                    <Paper elevation={0} />
-                                <Accordion>
+
+                                </Toolbar>
+                                <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                                    <Paper elevation={2} />
+
 
                                     <AccordionSummary
                                         expandIcon={<DeleteIcon/>}
@@ -246,6 +336,37 @@ export default function SignInSide() {
                                         aria-controls="additional-actions1-content"
                                         id="additional-actions1-header"
                                     >
+                                        <Button
+                                            variant="contained"
+
+
+                                            expandIcon={ <DeleteIcon /> }
+                                            onClick={ handleClickOpen }
+                                        >
+
+                                        </Button>
+
+                                        <Dialog
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title">{"Remove from cart"}</DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    Are you sure you want to delete these item(s)?
+                                                </DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleClose} color="primary">
+                                                    CANCEL
+                                                </Button>
+                                                <Button onClick={handleClose} color="primary" autoFocus>
+                                                    REMOVE
+                                                </Button>
+                                            </DialogActions>
+                                        </Dialog>
                                         <FormControlLabel
                                             aria-label="Acknowledge"
                                             onClick={(event) => event.stopPropagation()}
@@ -253,21 +374,27 @@ export default function SignInSide() {
                                             control={<Checkbox />}
                                             label="Select All"
                                         />
-                                    </AccordionSummary>
 
-                                </Accordion>
+                                    </AccordionSummary>
                                 </Grid>
+
                             </AppBar>
 
                         </Grid>
                         <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
 
                             <Paper elevation={0} />
+                            <Accordion>
+
+
+                                    <Typography className={classes.heading}>Preffered Delivery option</Typography>
+
+                            </Accordion>
                         </Grid>
 
-                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
-                            <Paper elevation={0} />
-                        <Accordion>
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                            <Paper elevation={2} />
+
                             <AccordionSummary>
                                 <FormControlLabel
                                     aria-label="Acknowledge"
@@ -276,13 +403,49 @@ export default function SignInSide() {
                                     control={<Checkbox />}
                                     label="Product"
                                 />
+                                <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                    Brand / More products
+                                </Box>
+
+
+                                <Typography component="legend" variant="h6">
+                                    <Box color="info.main" textAlign="left">RS 3000</Box>
+                                </Typography>
+                                <Box color="error.main">27%</Box>
+
+                                <Typography component="div">
+                                    <Box textAlign="justify" m={1}>
+                                        Promotion
+                                    </Box>
+                                </Typography>
                             </AccordionSummary>
-                        </Accordion>
+                            <Grid container spacing={0}>
+                                <Grid item>
+                                    <ButtonBase className={classes.image}>
+                                        <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
+                                    </ButtonBase>
+                                </Grid>
+                            </Grid>
+                            <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                Brand / More products
+                            </Box>
+
+
+                            <Typography component="legend" variant="h6">
+                                <Box color="info.main" textAlign="left">RS 3000</Box>
+                            </Typography>
+                            <Box color="error.main">27%</Box>
+
+                            <Typography component="div">
+                                <Box textAlign="justify" m={1}>
+                                    Promotion
+                                </Box>
+                            </Typography>
                         </Grid>
 
-                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
-                            <Paper elevation={0} />
-                            <Accordion>
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                            <Paper elevation={2} />
+
                                 <AccordionSummary>
                                     <FormControlLabel
                                         aria-label="Acknowledge"
@@ -292,7 +455,13 @@ export default function SignInSide() {
                                         label="Product"
                                     />
                                 </AccordionSummary>
-                            </Accordion>
+                            <Grid container spacing={0}>
+                                <Grid item>
+                                    <ButtonBase className={classes.image}>
+                                        <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
+                                    </ButtonBase>
+                                </Grid>
+                            </Grid>
                         </Grid>
 
 
@@ -317,6 +486,7 @@ export default function SignInSide() {
                                 </AppBar>
 
                             </Grid>
+
 
 
                                     <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
@@ -383,6 +553,7 @@ export default function SignInSide() {
 
                 </Grid>
             </Container>
+            <Footer/>
         </Container>
     );
 }
