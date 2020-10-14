@@ -1,44 +1,72 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-
-import Grid from '@material-ui/core/Grid';
-
-
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import ButtonBase from '@material-ui/core/ButtonBase';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles , withStyles} from '@material-ui/core/styles';
+import Navbar from './navbar';
+import Container from '@material-ui/core/Container';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Collapse from '@material-ui/core/Collapse';
 
+import IconButton from '@material-ui/core/IconButton';
+
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+import InputBase from '@material-ui/core/InputBase';
+
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import List from "@material-ui/core/List";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import DeleteIcon from '@material-ui/icons/Delete';
+import image_cartPage_1 from "../resources/images/image_cartPage_1.jpg";
+import ButtonBase from "@material-ui/core/ButtonBase";
+import Footer from './Footer/footer';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+
+
+
+function preventDefault(event) {
+    event.preventDefault();
+}
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
+            {'Copyright Â© '}
             <Link color="inherit" href="https://material-ui.com/">
                 Your Website
             </Link>{' '}
@@ -47,90 +75,151 @@ function Copyright() {
         </Typography>
     );
 }
-const images = [
-    {
-        url: '/static/images/grid-list/breakfast.jpg',
-        title: 'Breakfast',
-        width: '40%',
-    },
-    {
-        url: '/static/images/grid-list/burgers.jpg',
-        title: 'Burgers',
-        width: '30%',
-    },
-    {
-        url: '/static/images/grid-list/camera.jpg',
-        title: 'Camera',
-        width: '30%',
-    },
+const products = [
+    { name: 'Shipping ', desc: '', price: 'colombo 07 - fort' },
+    { name: 'Subtotal >', desc: '', price: '$3.45' },
+
 ];
-
-const drawerWidth = 240;
-
-
-const useStyles = makeStyles((theme) => ({
+const cards = [1];
+const BootstrapInput = withStyles((theme) => ({
     root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        minWidth: 300,
-        width: '100%',
-    },
-    drawer: {
-        [theme.breakpoints.up('sm')]: {
-            width: drawerWidth,
-            flexShrink: 0,
+        'label + &': {
+            marginTop: theme.spacing(3),
         },
     },
-    appBar: {
-        [theme.breakpoints.up('sm')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-            marginLeft: drawerWidth,
-        },
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-        [theme.breakpoints.up('sm')]: {
-            display: 'none',
-        },
-    },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    content: {
-        flexGrow: 1,
-        padding: theme.spacing(3),
-    },
-    icon: {
-        marginRight: theme.spacing(2),
-    },
-    heroContent: {
+    input: {
+        borderRadius: 4,
+        position: 'relative',
         backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(8, 0, 6),
+        border: '1px solid #ced4da',
+        fontSize: 16,
+        padding: '10px 26px 10px 12px',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:focus': {
+            borderRadius: 4,
+            borderColor: '#80bdff',
+            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        },
     },
-    heroButtons: {
-        marginTop: theme.spacing(4),
+}))(InputBase);
+const useStyles = makeStyles((theme) => ({
+
+    root: {
+        backgroundcolor:"primary",
+        display: 'flex',
+        '& > *': {
+            margin: theme.spacing(3),
+            width:'100vh',
+            height: '100vh',
+
+        },
     },
-    cardGrid: {
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
+
+
+    paper: {
+        margin: theme.spacing(4, 4),
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    avatar: {
+        margin: theme.spacing(2),
+        backgroundColor: theme.palette.secondary.main,
+        marginLeft:'auto',
+    },
+    form: {
+        width: '10%', // Fix IE 11 issue.
+        marginTop: theme.spacing(1),
+    },
+    submit: {
+        margin: theme.spacing(1, 0, 1),
+    },
+    media: {
+        height: 0,
+        paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+        transform: 'rotate(0deg)',
+        marginLeft: 'auto',
+        transition: theme.transitions.create('transform', {
+            duration: theme.transitions.duration.shortest,
+        }),
+    },
+    expandOpen: {
+        transform: 'rotate(180deg)',
+    },
+    cardMedia: {
+        paddingTop: '20%', // 16:9
     },
     card: {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
     },
-    cardMedia: {
-        paddingTop: '56.25%', // 16:9
-    },
     cardContent: {
         flexGrow: 1,
     },
+    cardGrid: {
+        paddingTop: theme.spacing(1),
+        paddingBottom: theme.spacing(1),
+    },
+    heading: {
+        fontSize: theme.typography.pxToRem(15),
+    },
+    secondaryHeading: {
+        fontSize: theme.typography.pxToRem(15),
+        color: theme.palette.text.secondary,
+    },
+    icon: {
+        verticalAlign: 'bottom',
+        height: 20,
+        width: 20,
+    },
 
+    nested: {
+        paddingLeft: theme.spacing(4),
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(false),
+        marginRight: theme.spacing(37),
+        height: 40,
+        width: 451.7,
+        padding: '0 30px',
+    },
+    buttons: {
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(7),
+    },
+    margin:{
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(2),
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(10),
+        height: 27,
+        width: 805,
+    },
     image: {
         position: 'relative',
         height: 200,
+        width:300,
+
         [theme.breakpoints.down('xs')]: {
             width: '100% !important', // Overrides inline-style
             height: 100,
@@ -181,7 +270,7 @@ const useStyles = makeStyles((theme) => ({
     },
     imageTitle: {
         position: 'relative',
-        padding: `${theme.spacing(2)}px ${theme.spacing(4)}px ${theme.spacing(1) + 6}px`,
+        padding: `${theme.spacing(3)}px ${theme.spacing(4)}px ${theme.spacing(2) + 6}px`,
     },
     imageMarked: {
         height: 3,
@@ -194,153 +283,277 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ResponsiveDrawer(props) {
-    const { window } = props;
+const message = `Truncation should be conditionally applicable on this long line of text
+ as this is a much longer line than what the container can support. `;
+
+export default function SignInSide() {
     const classes = useStyles();
-    const theme = useTheme();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [expanded, setExpanded] = React.useState(false);
 
-    const handleDrawerToggle = () => {
-        setMobileOpen(!mobileOpen);
+    const handleExpandClick = () => {
+        setExpanded(!expanded);
+    };
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
     };
 
-
-
-
-
-    const container = window !== undefined ? () => window().document.body : undefined;
-
-    const [value, setValue] = React.useState('female');
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
+    const handleClose = () => {
+        setOpen(false);
     };
-
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-
-            </AppBar>
+        <Container  component="main" maxWidth="full">
+            <Navbar/>
+            <Container  component="main" maxWidth="full" color="default" >
 
 
+                <Grid container component="main" className={classes.root} >
+                    <CssBaseline />
 
-            <div className={classes.heroContent}>
-                <Container maxWidth="sm">
-
-                    <FormControl component="fieldset">
-                        <FormLabel component="legend">Gender</FormLabel>
-                        <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                            <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
-                        </RadioGroup>
-                    </FormControl>
-
-                </Container>
-
-                <div className={classes.heroContent}>
-                    <Container maxWidth="sm">
-
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Gender</FormLabel>
-                            <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                                <FormControlLabel value="male" control={<Radio />} label="Male" />
-                                <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                <FormControlLabel value="disabled" disabled control={<Radio />} label="(Disabled option)" />
-                            </RadioGroup>
-                        </FormControl>
-
-                    </Container>
-                </div>
-
-            </div>
+                    <Grid item xs={false} sm={4} md={7} component={Paper} elevation={1} square >
 
 
 
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
 
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
-                {images.map((image) => (
-                    <ButtonBase
-                        focusRipple
-                        key={image.title}
-                        className={classes.image}
-                        focusVisibleClassName={classes.focusVisible}
-                        style={{
-                            width: image.width,
-                        }}
-                    >
-          <span
-              className={classes.imageSrc}
-              style={{
-                  backgroundImage: `url(${image.url})`,
-              }}
-          />
-                        <span className={classes.imageBackdrop} />
-                        <span className={classes.imageButton}>
-            <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                className={classes.imageTitle}
-            >
-              {image.title}
-                <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-                    </ButtonBase>
-                ))}
-                <div className={classes.toolbar} />
-                {images.map((image) => (
-                    <ButtonBase
-                        focusRipple
-                        key={image.title}
-                        className={classes.image}
-                        focusVisibleClassName={classes.focusVisible}
-                        style={{
-                            width: image.width,
-                        }}
-                    >
-          <span
-              className={classes.imageSrc}
-              style={{
-                  backgroundImage: `url(${image.url})`,
-              }}
-          />
-                        <span className={classes.imageBackdrop} />
-                        <span className={classes.imageButton}>
-            <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                className={classes.imageTitle}
-            >
-              {image.title}
-                <span className={classes.imageMarked} />
-            </Typography>
-          </span>
-                    </ButtonBase>
-                ))}
+                            <Paper elevation={0} />
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Shopping Cart
+                                    </Typography>
 
 
-            </main>
+                                </Toolbar>
+                                <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                                    <Paper elevation={2} />
 
 
-        </div>
+                                    <AccordionSummary
+                                        expandIcon={<DeleteIcon/>}
+                                        aria-label="Expand"
+                                        aria-controls="additional-actions1-content"
+                                        id="additional-actions1-header"
+                                    >
+                                        <Button
+                                            variant="contained"
 
 
+                                            expandIcon={ <DeleteIcon /> }
+                                            onClick={ handleClickOpen }
+                                        >
+
+                                        </Button>
+
+                                        <Dialog
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title">{"Remove from cart"}</DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    Are you sure you want to delete these item(s)?
+                                                </DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleClose} color="primary">
+                                                    CANCEL
+                                                </Button>
+                                                <Button onClick={handleClose} color="primary" autoFocus>
+                                                    REMOVE
+                                                </Button>
+                                            </DialogActions>
+                                        </Dialog>
+                                        <FormControlLabel
+                                            aria-label="Acknowledge"
+                                            onClick={(event) => event.stopPropagation()}
+                                            onFocus={(event) => event.stopPropagation()}
+                                            control={<Checkbox />}
+                                            label="Select All"
+                                        />
+
+                                    </AccordionSummary>
+                                </Grid>
+
+                            </AppBar>
+
+                        </Grid>
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                            <Paper elevation={0} />
+                            <Accordion>
+
+
+                                    <Typography className={classes.heading}>Preffered Delivery option</Typography>
+
+                            </Accordion>
+                        </Grid>
+
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                            <Paper elevation={2} />
+
+                            <AccordionSummary>
+                                <FormControlLabel
+                                    aria-label="Acknowledge"
+                                    onClick={(event) => event.stopPropagation()}
+                                    onFocus={(event) => event.stopPropagation()}
+                                    control={<Checkbox />}
+                                    label="Product"
+                                />
+                                <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                    Brand / More products
+                                </Box>
+
+
+                                <Typography component="legend" variant="h6">
+                                    <Box color="info.main" textAlign="left">RS 3000</Box>
+                                </Typography>
+                                <Box color="error.main">27%</Box>
+
+                                <Typography component="div">
+                                    <Box textAlign="justify" m={1}>
+                                        Promotion
+                                    </Box>
+                                </Typography>
+                            </AccordionSummary>
+                            <Grid container spacing={0}>
+                                <Grid item>
+                                    <ButtonBase className={classes.image}>
+                                        <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
+                                    </ButtonBase>
+                                </Grid>
+                            </Grid>
+                            <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                Brand / More products
+                            </Box>
+
+
+                            <Typography component="legend" variant="h6">
+                                <Box color="info.main" textAlign="left">RS 3000</Box>
+                            </Typography>
+                            <Box color="error.main">27%</Box>
+
+                            <Typography component="div">
+                                <Box textAlign="justify" m={1}>
+                                    Promotion
+                                </Box>
+                            </Typography>
+                        </Grid>
+
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                            <Paper elevation={2} />
+
+                                <AccordionSummary>
+                                    <FormControlLabel
+                                        aria-label="Acknowledge"
+                                        onClick={(event) => event.stopPropagation()}
+                                        onFocus={(event) => event.stopPropagation()}
+                                        control={<Checkbox />}
+                                        label="Product"
+                                    />
+                                </AccordionSummary>
+                            <Grid container spacing={0}>
+                                <Grid item>
+                                    <ButtonBase className={classes.image}>
+                                        <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
+                                    </ButtonBase>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+
+                    </Grid>
+
+
+
+
+
+                    <Grid item xs={false} sm={4} md={4} component={Paper} elevation={1} square>
+                        <React.Fragment>
+                            <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                                <Paper elevation={0} />
+                                <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                    <Toolbar className={classes.toolbar}>
+                                        <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
+                                            Order Summary
+                                        </Typography>
+
+                                    </Toolbar>
+                                </AppBar>
+
+                            </Grid>
+
+
+
+                                    <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+
+                                        <Paper elevation={0} />
+                                        <Accordion>
+                                            <AccordionSummary
+                                                expandIcon={<ExpandMoreIcon />}
+                                                aria-controls="panel1a-content"
+                                                id="panel1a-header"
+
+                                            >
+                                                <Typography className={classes.heading}>Enter Coupon</Typography>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                <FormControl className={classes.margin}>
+                                                    <InputLabel htmlFor="demo-customized-textbox"></InputLabel>
+
+                                                    <TextField id="outlined-basic" label="Enter coupon code" variant="outlined" />
+                                                </FormControl>
+                                                <Button variant="contained" color="primary" className={classes.buttons}>
+                                                    Apply
+                                                </Button>
+                                            </AccordionDetails>
+                                        </Accordion>
+                                    </Grid>
+
+
+
+
+                            <React.Fragment>
+                                <List disablePadding>
+                                    {products.map((product) => (
+                                        <ListItem className={classes.listItem} key={product.name}>
+                                            <ListItemText primary={product.name} secondary={product.desc} />
+                                            <Typography variant="body2">{product.price}</Typography>
+                                        </ListItem>
+                                    ))}
+                                    <ListItem className={classes.listItem}>
+                                        <ListItemText primary="Total > " />
+                                        <Box color="info.main">$100</Box>
+                                    </ListItem>
+                                </List>
+                                <div className={classes.buttons}>
+
+
+                                    <Button
+
+                                        variant="contained"
+                                        color="secondary"
+
+                                        className={classes.button}
+                                    >
+                                        CHECKOUT
+                                    </Button>
+                                </div>
+
+                            </React.Fragment>
+
+                        </React.Fragment>
+
+                    </Grid>
+
+
+                </Grid>
+            </Container>
+            <Footer/>
+        </Container>
     );
 }
-
-ResponsiveDrawer.propTypes = {
-    /**
-     * Injected by the documentation to work in an iframe.
-     * You won't need it on your project.
-     */
-    window: PropTypes.func,
-};
-
-export default ResponsiveDrawer;

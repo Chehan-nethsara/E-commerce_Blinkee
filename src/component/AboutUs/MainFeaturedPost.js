@@ -6,13 +6,15 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 
+
+
 const useStyles = makeStyles((theme) => ({
     mainFeaturedPost: {
         position: 'relative',
         backgroundColor: theme.palette.grey[800],
         color: theme.palette.common.white,
         marginBottom: theme.spacing(4),
-        backgroundImage: 'url(https://source.unsplash.com/random)',
+        backgroundImage: 'image_about_us.jpg',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -40,22 +42,21 @@ export default function MainFeaturedPost(props) {
     const { post } = props;
 
     return (
-        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
+        <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `(${post.image})` }}>
             {/* Increase the priority of the hero background image */}
             {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
             <div className={classes.overlay} />
             <Grid container>
-                <Grid item md={6}>
+                <Grid item md={12}>
                     <div className={classes.mainFeaturedPostContent}>
                         <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                            {post.title}
+                            Delivering happiness on the go!
+
                         </Typography>
-                        <Typography variant="h5" color="inherit" paragraph>
-                            {post.description}
+                        <Typography variant="h3" color="inherit" paragraph>
+                            Happy Shopping
                         </Typography>
-                        <Link variant="subtitle1" href="#">
-                            {post.linkText}
-                        </Link>
+
                     </div>
                 </Grid>
             </Grid>
