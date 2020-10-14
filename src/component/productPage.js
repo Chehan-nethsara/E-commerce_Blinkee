@@ -36,7 +36,7 @@ import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import ChatIcon from '@material-ui/icons/Chat';
 import Rating from '@material-ui/lab/Rating';
 import AccordionSummary from "@material-ui/core/AccordionSummary";
-import DeleteIcon from "@material-ui/icons/Delete";
+import Footer from './Footer/footer';
 
 
 
@@ -496,6 +496,18 @@ export default function SignInSide() {
             </div>
         </Grid>
         </Container>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Footer/>
         </Container>
     );
 }
