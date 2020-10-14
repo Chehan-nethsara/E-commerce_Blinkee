@@ -13,14 +13,12 @@ import checkout from "./component/checkout";
 import shippingpolicy from "./component/shippingpolicy";
 import custom from "./component/custom";
 import FooterMain from "./component/Footer/footer";
-
-
 import cartPage from "./component/cartPage";
 import register from "./component/register";
 import discount from "./component/discount";
 import feedback from "./component/feedback"
 import coupon from "./component/coupon"
-
+import dropshipping from "./component/dropshipping";
 function App() {
   return (
       <BrowserRouter>
@@ -43,6 +41,7 @@ function App() {
 
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
+        <Route exact path= '/dropshipping' component={ dropshipping } />
 
         <Route exact path='/footer' component={ FooterMain } />
 
