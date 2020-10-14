@@ -17,6 +17,8 @@ import discount from "./component/discount";
 import feedback from "./component/feedback"
 import coupon from "./component/coupon"
 
+import dropshipping from "./component/dropshipping";
+
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
 
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
+        <Route exact path= '/dropshipping' component={ dropshipping } />
 
       </Switch>
 
