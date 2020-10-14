@@ -17,6 +17,7 @@ import register from "./component/register";
 import discount from "./component/discount";
 import feedback from "./component/feedback"
 import coupon from "./component/coupon"
+import LoginPage from "./component/login";
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route exact path='/discount' component= {discount } />
 
         <Route exact path='/footer' component={ FooterMain } />
+        <Route exact path='/login' component={ LoginPage } />
 
       </Switch>
 
