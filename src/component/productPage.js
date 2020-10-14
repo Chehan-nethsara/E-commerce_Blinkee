@@ -14,21 +14,29 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Navbar from './navbar';
 import Container from '@material-ui/core/Container';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import { purple } from '@material-ui/core/colors';
+import ButtonBase from "@material-ui/core/ButtonBase";
+import image_cartPage_1 from "../resources/images/image_cartPage_1.jpg";
+import PropTypes from 'prop-types';
+import withWidth from '@material-ui/core/withWidth';
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import AccordionDetails from "@material-ui/core/AccordionDetails";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import IconButton from '@material-ui/core/IconButton';
-
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import AllInboxIcon from '@material-ui/icons/AllInbox';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import AssignmentReturnedIcon from '@material-ui/icons/AssignmentReturned';
+import Forward5Icon from '@material-ui/icons/Forward5';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import ChatIcon from '@material-ui/icons/Chat';
+import Rating from '@material-ui/lab/Rating';
+import AccordionSummary from "@material-ui/core/AccordionSummary";
+import Footer from './Footer/footer';
 
 
 
@@ -51,16 +59,14 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(4),
 
     },
-    image: {
-        backgroundImage: 'url(https://source.unsplash.com/random)',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+    roots: {
+        height: '100vh',
+        margin: theme.spacing(3),
+
     },
+
     paper: {
-        margin: theme.spacing(8, 4),
+        margin: theme.spacing(3, 0),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -91,11 +97,132 @@ const useStyles = makeStyles((theme) => ({
         transform: 'rotate(180deg)',
     },
 
+
+
+    image: {
+        position: 'relative',
+        height: 270,
+        [theme.breakpoints.down('xs')]: {
+            width: '100% !important', // Overrides inline-style
+            height: 100,
+        },
+        '&:hover, &$focusVisible': {
+            zIndex: 1,
+            '& $imageBackdrop': {
+                opacity: 0,
+            },
+            '& $imageMarked': {
+                opacity: 0,
+            },
+            '& $imageTitle': {
+                border: '4px solid currentColor',
+            },
+        },
+    },
+    focusVisible: {},
+    imageButton: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: theme.palette.common.white,
+    },
+    imageSrc: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 40%',
+    },
+    imageBackdrop: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        backgroundColor: theme.palette.common.black,
+        opacity: 0.4,
+        transition: theme.transitions.create('opacity'),
+    },
+    imageTitle: {
+        position: 'relative',
+        padding: `${theme.spacing(3)}px ${theme.spacing(4)}px ${theme.spacing(2) + 6}px`,
+    },
+    imageMarked: {
+        height: 3,
+        width: 18,
+        backgroundColor: theme.palette.common.white,
+        position: 'absolute',
+        bottom: -2,
+        left: 'calc(50% - 9px)',
+        transition: theme.transitions.create('opacity'),
+    },
+
+    margin:{
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(6),
+        marginRight: theme.spacing(8),
+        width:500,
+        height:100,
+
+    },
+    buttons: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(12),
+        marginRight: theme.spacing(7),
+        width:100,
+        height:50,
+    },
+    buttonss: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+width:500,
+        height:100,
+
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        marginLeft: theme.spacing(10),
+        marginRight: theme.spacing(1),
+    },
+    buttonsss: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        marginLeft: theme.spacing(10),
+        marginRight: theme.spacing(2),
+    },
 }));
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            // Purple and green play nicely together.
+            main: purple[500],
+        },
+        secondary: {
+            // This is green.A700 as hex.
+            main: '#11cb5f',
+        },
+    },
+});
+const components = {
+    sm: 'em',
+    md: 'u',
+    lg: 'del',
+};
 
-const message = `Truncation should be conditionally applicable on this long line of text
- as this is a much longer line than what the container can support. `;
-
+const message = `Rating & Reviews of Product. `;
+const messagee = `This product has no reviews. Let other know what do you think and be the first to write a review   . `;
+const messages = `Quections about the product `;
+const messagess = `There are no quection yet. ASk the seller now and their answer will show here. `;
 export default function SignInSide() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
@@ -103,6 +230,7 @@ export default function SignInSide() {
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+    const [value, setValue] = React.useState(2);
 
     return (
         <Container  component="main" maxWidth="full">
@@ -113,99 +241,273 @@ export default function SignInSide() {
             <CssBaseline />
 
             <Grid item xs={false} sm={4} md={7} component={Paper} elevation={5} square >
+                <Paper elevation={3} />
+                <Grid container spacing={0}>
+                    <Grid item>
+                        <ButtonBase className={classes.image}>
+                            <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
+                        </ButtonBase>
+                    </Grid>
+                    <div style={{ width: 300 }}>
+                        <Box component="fieldset" mb={2} borderColor="transparent">
+                        <Typography variant="h6" color="inherit" >
+                        Product Name
+                        </Typography>
+                        </Box>
+                        <Box component="fieldset" mb={2} borderColor="transparent">
+                            <Typography component="legend"></Typography>
+                            <Rating name="read-only" value={null} size="small" readOnly />
+                        </Box>
 
-                <Card className={classes.root}>
-                    <CardHeader
-                        title="Shrimp and Chorizo Paella"
-                        subheader="September 14, 2016"
-                    />
-                    <CardMedia
-                        className={classes.media}
-                        image="/static/images/cards/paella.jpg"
-                        title="Paella dish"
-                    />
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+                            <Paper elevation={0} />
+                            <AccordionSummary
 
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon />
-                        </IconButton>
-                        <IconButton aria-label="share">
-                            <ShareIcon />
-                        </IconButton>
+                                aria-label="Expand"
+                                aria-controls="additional-actions1-content"
+                                id="additional-actions1-header"
+                            >
+                                <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                    Brand / More products
+                                </Box>
+                            </AccordionSummary>
 
-                    </CardActions>
+                        </Grid>
 
-                </Card>
+                        <Typography component="legend" variant="h6">
+                        <Box color="info.main" textAlign="left">RS 3000</Box>
+                        </Typography>
+                        <Box color="error.main">27%</Box>
+
+                        <Typography component="div">
+                            <Box textAlign="justify" m={1}>
+                               Promotion
+                            </Box>
+                            <Box textAlign="left" m={1}>
+                                Quntity
+                            </Box>
+                            <Box textAlign="center" m={1}>
+                                <div className={classes.buttonss}>
+
+                                    <Button  className={classes.buttonsss} variant="outlined" color="secondary" >
+                                        Buy Now
+                                    </Button>
+
+                                    <Button
+
+                                        variant="contained"
+                                        color="secondary"
+
+                                        className={classes.button}
+                                    >
+                                        Add to cart
+                                    </Button>
+                                </div>
+                            </Box>
+                            <Box textAlign="right" m={1}>
+
+                            </Box>
+                        </Typography>
+                    </div>
+                </Grid>
             </Grid>
+
+
 
                 <Grid item xs={12} sm={8} md={4} component={Paper} elevation={5} square>
-                <div className={classes.paper}>
+
                     <Paper elevation={3} />
-                    <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
-                    </Avatar>
-                    <Typography component="h1" variant="h5">
-                        Sign in
-                    </Typography>
-                    <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
-                            autoFocus
-                        />
+                    <Grid container wrap="nowrap" spacing={0}>
+                    <AppBar position="static" color="default" elevation={2} className={classes.appBar}>
+                        <Toolbar className={classes.toolbar}>
+                            <Typography variant="h8" color="inherit" noWrap className={classes.toolbarTitle}>
+                                Delivery options
+                                <IconButton  color="inherit">
+                                    <ErrorOutlineIcon  />
+                                </IconButton>
+
+                                <form>
+                                    <IconButton  color="inherit">
+                                            <LocationOnIcon  />
+                                    </IconButton>
+                                   colombo 01 - fort
+                                </form>
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <AllInboxIcon />
+                                    </IconButton>
+                                    Home Delivery 3-5 days
+                                </form>
+
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <MonetizationOnIcon  />
+                                    </IconButton>
+
+                                    Cash on Deliver Available
+                                </form>
+
+                            </Typography>
+                            <Typography variant="h8" color="inherit"  icon={LocationOnIcon} noWrap className={classes.toolbarTitle}>
+
+                            </Typography>
 
 
+                        </Toolbar>
+                    </AppBar>
+                    </Grid>
+                        <Grid container wrap="nowrap" spacing={0}>
+                    <AppBar position="static" color="default" elevation={2} className={classes.appBar}>
+                        <Toolbar className={classes.toolbar}>
+                            <Typography variant="h7" color="inherit" noWrap className={classes.toolbarTitle}>
+                                Return & Warantity
+                                <IconButton  color="inherit">
+                                    <ErrorOutlineIcon  />
+                                </IconButton>
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <Forward5Icon  />
+                                    </IconButton>
 
+                                    5 days Returns
+                                </form>
+                                <form>
+                                    <IconButton  color="inherit">
+                                        <AssignmentReturnedIcon  />
+                                    </IconButton>
 
+                                    1 year Local seller waranty
+                                </form>
+                            </Typography>
 
-                    </form>
-                </div>
+                        </Toolbar>
+                    </AppBar>
+                        </Grid>
 
+                    <ThemeProvider theme={theme}>
+                        <Button color="primary">Go To Store</Button>
+                    </ThemeProvider>
             </Grid>
 
-            <div className={classes.root}>
-                <Paper className={classes.paper}>
+
+
+            <div className={classes.roots}>
+                <Grid item xs={false} sm={5} md={12} component={Paper} elevation={5} square >
                     <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={2}>
+                    <Grid container wrap="nowrap" spacing={0}>
                         <Grid item>
-                            <Avatar>W</Avatar>
+
                         </Grid>
                         <Grid item xs zeroMinWidth>
-                            <Typography noWrap>{message}</Typography>
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h7" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Rating & Reviews of Product
+                                    </Typography>
+
+                                </Toolbar>
+                            </AppBar>
+
+                            <div>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+
+                                </Box>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+
+                                </Box>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+
+                                </Box>
+                                <Box component="fieldset" mb={1} borderColor="transparent">
+                                    <Typography component="legend"></Typography>
+                                    <Rating
+                                        name="simple-controlled"
+                                        value={value}
+                                        size="small"
+                                        onChange={(event, newValue) => {
+                                            setValue(newValue);
+                                        }}
+                                    />
+                                </Box>
+
+                            </div>
+                            <Typography noWrap>{messagee}</Typography>
                         </Grid>
                     </Grid>
-                </Paper>
+                </Grid>
+
+
+
                 <Paper className={classes.paper}>
                     <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={2}>
+                    <Grid container wrap="nowrap" spacing={0}>
                         <Grid item>
-                            <Avatar>W</Avatar>
                         </Grid>
                         <Grid item xs>
-                            <Typography noWrap>{message}</Typography>
+                            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
+                                <Toolbar className={classes.toolbar}>
+                                    <Typography variant="h7" color="inherit" noWrap className={classes.toolbarTitle}>
+                                        Quections about the product
+                                    </Typography>
+
+                                </Toolbar>
+                            </AppBar>
+
+                            <FormControl className={classes.margin}>
+                                <InputLabel htmlFor="demo-customized-textbox"></InputLabel>
+
+                                <TextField id="outlined-basic" label="Enter coupon code" variant="outlined" />
+                            </FormControl>
+                            <Button variant="contained" color="primary" className={classes.buttons}>
+                                Apply
+                            </Button>
+                            <Typography noWrap>{messagess}</Typography>
                         </Grid>
                     </Grid>
                 </Paper>
-                <Paper className={classes.paper}>
-                    <Paper elevation={3} />
-                    <Grid container wrap="nowrap" spacing={2}>
-                        <Grid item>
-                            <Avatar>W</Avatar>
-                        </Grid>
-                        <Grid item xs>
-                            <Typography>{message}</Typography>
-                        </Grid>
-                    </Grid>
-                </Paper>
+
             </div>
         </Grid>
         </Container>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <Footer/>
         </Container>
     );
 }

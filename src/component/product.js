@@ -1,19 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
+import ViewQuiltIcon from '@material-ui/icons/ViewQuilt';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
+
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -25,7 +17,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 import Grid from '@material-ui/core/Grid';
 
-
+import image_cart_1 from '../resources/images/image_cart_1.jpg';
+import image_cart_2 from '../resources/images/image_cart_2.jpg';
+import image_cart_4 from '../resources/images/image_cart_4.jpg';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import Radio from '@material-ui/core/Radio';
@@ -33,6 +27,18 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+import Navbar from "./navbar";
+import GridItem from "@material-ui/core/Grid";
+import Slider from "react-slick";
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
+import Pagination from '@material-ui/lab/Pagination';
+import Footer from './Footer/footer';
+
+
+
 
 function Copyright() {
     return (
@@ -48,7 +54,7 @@ function Copyright() {
 }
 
 const drawerWidth = 240;
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12];
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -79,10 +85,10 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         flexGrow: 1,
-        padding: theme.spacing(3),
+        padding: theme.spacing(0),
     },
     icon: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(0),
     },
     heroContent: {
         backgroundColor: theme.palette.background.paper,
@@ -106,6 +112,17 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         flexGrow: 1,
     },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 120,
+    },
+    selectEmpty: {
+        marginTop: theme.spacing(2),
+    },
+    ima:{
+        width:30,
+        height: 30,
+}
 }));
 
 function ResponsiveDrawer(props) {
@@ -118,9 +135,16 @@ function ResponsiveDrawer(props) {
         setMobileOpen(!mobileOpen);
     };
 
+    const [age, setAge] = React.useState('');
 
-
-
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true
+    };
 
     const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -129,17 +153,135 @@ function ResponsiveDrawer(props) {
     const handleChange = (event) => {
         setValue(event.target.value);
     };
+    const [view, setView] = React.useState('list');
+
+    const handleChangeView = (event, nextView) => {
+        setView(nextView);
+    };
 
     return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar position="fixed" className={classes.appBar}>
-
-            </AppBar>
 
 
+        <Container  component="main" maxWidth="full">
+            <Navbar/>
+            <Container  component="main" maxWidth="full">
 
-            <div className={classes.heroContent}>
+                    <Grid container >
+                        <GridItem xs={false} sm={10} xs={30} >
+                            <Card>
+                                <Slider {...settings}>
+                                    <div>
+                                        <img className={classes.imag}
+                                            src={image_cart_1}
+                                            alt="First slide"
+
+                                        />
+                                        <div className="slick-caption">
+                                            {/*<h4>*/}
+                                            {/*    Yellowstone*/}
+                                            {/*    National Park, United States*/}
+                                            {/*</h4>*/}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img className={classes.imag}
+                                            src={image_cart_2}
+                                            alt="Second slide"
+
+                                        />
+                                        <div className="slick-caption">
+                                            {/*<h4>*/}
+                                            {/*    Somewhere Beyond,*/}
+                                            {/*    United States*/}
+                                            {/*</h4>*/}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img className={classes.imag}
+                                            src={image_cart_4}
+                                            alt="Third slide"
+
+                                        />
+                                        <div className="slick-caption">
+                                            {/*<h4>*/}
+                                            {/*    Yellowstone*/}
+                                            {/*    National Park, United States*/}
+                                            {/*</h4>*/}
+                                        </div>
+                                    </div>
+                                </Slider>
+                            </Card>
+                        </GridItem>
+                    </Grid>
+
+
+            <Card className={classes.root}>
+<div>
+    <Grid container >
+        <GridItem xs={1} sm={10} xs={20} >
+    <Typography component="h1" variant="h5">
+        Sign in
+    </Typography>
+        </GridItem>
+    </Grid>
+
+</div>
+
+                <GridItem xs={1} sm={10} xs={20} >
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                </GridItem>
+                <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={age}
+                        onChange={handleChange}
+                        label="Age"
+                    >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={10}>Ten</MenuItem>
+                        <MenuItem value={20}>Twenty</MenuItem>
+                        <MenuItem value={30}>Thirty</MenuItem>
+                    </Select>
+                </FormControl>
+
+                <GridItem xs={1} sm={10} xs={20} >
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                </GridItem>
+                    <div>
+
+                        <ToggleButtonGroup orientation="vertical" value={view} exclusive onChange={handleChangeView}>
+                    <ToggleButton value="list" aria-label="list">
+                        <ViewListIcon />
+                    </ToggleButton>
+                        </ToggleButtonGroup>
+                    </div>
+                    <div>
+                        <ToggleButtonGroup orientation="vertical" value={view} exclusive onChange={handleChangeView}>
+                    <ToggleButton value="module" aria-label="module">
+                        <ViewModuleIcon />
+                    </ToggleButton>
+                        </ToggleButtonGroup>
+                    </div>
+
+            </Card>
+
+                <Grid container >
+
+                </Grid>
+
+
+            <div className={classes.root}>
+
+
+                <div className={classes.heroContent}>
                 <Container maxWidth="sm">
 
                     <FormControl component="fieldset">
@@ -180,7 +322,7 @@ function ResponsiveDrawer(props) {
 
                 <Container className={classes.cardGrid} maxWidth="md">
                     {/* End hero unit */}
-                    <Grid container spacing={4}>
+                    <Grid container spacing={5}>
                         {cards.map((card) => (
                             <Grid item key={card} xs={10} sm={5} md={3}>
                                 <Card className={classes.card}>
@@ -209,10 +351,21 @@ function ResponsiveDrawer(props) {
                             </Grid>
                         ))}
                     </Grid>
+                    <div className={classes.heroContent}>
+                    <Container>
+                    <div className={classes.root}>
+
+                        <Pagination count={10} variant="outlined" shape="rounded" />
+                    </div>
+                </Container>
+                    </div>
                 </Container>
 
             </main>
         </div>
+            </Container>
+            <Footer/>
+        </Container>
     );
 }
 
