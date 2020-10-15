@@ -13,6 +13,7 @@ import dropshipping from '../resources/images/Dropshipping01.png'
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import {Container} from "@material-ui/core";
+import Footer from "./Footer/footer";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -80,12 +81,15 @@ export default function SimpleTabs() {
                 <h2>
                 Blinkee.com Reseller Program.
                 We stand behind our products and we will always cover any product defects or other problems that are our fault.
-                Please see our return policy and other company policies:
+                Please see our return policy and other company policies
             </h2>
+                <Link href="./register.js" variant="body2">
+                    {"  Register on Blinkee.com"}
+                </Link>
             </div>
             </Grid>
 
-            <Grid item xs={12} sm={12} md={8}>
+            <Grid item xs={12} sm={6} md={8}>
                 <div>
             <Link href="./register.js" variant="body2">
                 {"  Register on Blinkee.com"}
@@ -121,6 +125,7 @@ export default function SimpleTabs() {
             </TabPanel>
         </div>
         </div>
+            <Footer/>
         </div>
 
     );
