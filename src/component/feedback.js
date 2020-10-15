@@ -1,63 +1,96 @@
-import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
+import React from 'react';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Chart from './Feedback/chart';
+import FeedbackDes from './Feedback/feedbackDes';
+import Reviews from './Feedback/reviews';
+import Navbar from "./navbar";
+import Footer from './Footer/footer';
+import Card from '@material-ui/core/Card';
 
-const FormPage = () => {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+    },
+    card:{
+        minHeight: 50,
+        minWidth: 300,
+        background: 'linear-gradient(45deg, #5BA3F6 30%, #FFB028 90%)',
+    },
+    cardChart:{
+        minHeight: 50,
+        minWidth: 300,
+        background: '#FFFE81',
+    },
+    uButton: {
+        marginRight: 36,
+    },
+    menuButtonHidden: {
+        display: 'none',
+    },
+    title: {
+        flexGrow: 1,
+    },
+    container: {
+        paddingTop: theme.spacing(3),
+        paddingBottom: theme.spacing(15),
+        paddingRight: theme.spacing(1),
+        paddingLeft: theme.spacing(2),
+        marginLeft: "120px"
+    },
+    paper: {
+        padding: theme.spacing(2),
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
+    },
+    fixedHeight: {
+        height: 300,
+        width:1000,
+    },
+}));
+
+export default function Dashboard() {
+    const classes = useStyles();
+    const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
     return (
-        <MDBContainer>
-            <MDBRow>
-                <MDBCol md="6">
-                    <MDBCard>
-                        <MDBCardBody>
-                            <form>
-                                <p className="h4 text-center py-4">Sign up</p>
-                                <div className="grey-text">
-                                    <MDBInput
-                                        label="Your name"
-                                        icon="user"
-                                        group
-                                        type="text"
-                                        validate
-                                        error="wrong"
-                                        success="right"
-                                    />
-                                    <MDBInput
-                                        label="Your email"
-                                        icon="envelope"
-                                        group
-                                        type="email"
-                                        validate
-                                        error="wrong"
-                                        success="right"
-                                    />
-                                    <MDBInput
-                                        label="Confirm your email"
-                                        icon="exclamation-triangle"
-                                        group
-                                        type="text"
-                                        validate
-                                        error="wrong"
-                                        success="right"
-                                    />
-                                    <MDBInput
-                                        label="Your password"
-                                        icon="lock"
-                                        group
-                                        type="password"
-                                        validate
-                                    />
-                                </div>
-                                <div className="text-center py-4 mt-3">
-                                    <MDBBtn color="cyan" type="submit">
-                                        Register
-                                    </MDBBtn>
-                                </div>
-                            </form>
-                        </MDBCardBody>
-                    </MDBCard>
-                </MDBCol>
-            </MDBRow>
-        </MDBContainer>
-    );
-};
+        <div>
+            <Navbar/>
+            <div className={classes.root}>
+                <CssBaseline />
+                <main className={classes.content}>
+                    <Container maxWidth="lg" className={classes.container}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} md={4} lg={3}>
+                                <Card className={classes.card}>
+                                    {/*<Paper className={fixedHeightPaper}>*/}
+                                    <FeedbackDes/>
+                                    {/*</Paper>*/}
+                                </Card>
+                            </Grid>
+                            <Grid item xs={12} md={8} lg={9}>
+                                <Card className={classes.cardChart}>
+                                    {/*<Paper className={fixedHeightPaper}>*/}
+                                    <Chart/>
+                                    {/*</Paper>*/}
+                                </Card>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Paper className={classes.paper}>
+                                    <Reviews/>
+                                </Paper>
+                            </Grid>
+                        </Grid>
+                    </Container>
+                </main>
+            </div>
+            <Footer/>
+        </div>
 
-export default FormPage;
+    );
+}
