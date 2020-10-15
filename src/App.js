@@ -20,6 +20,7 @@ import feedback from "./component/feedback"
 import coupon from "./component/coupon"
 import LoginPage from "./component/login";
 import dropshipping from "./component/dropshipping";
+import feedbackApply from "./component/Feedback/feedbackApply";
 import dropfaq from "./component/dropfaq";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route exact path= '/home' component={ home } />
         <Route exact path='/navbar' component={ Navbar } />
         <Route exact path= '/register' component={ register } />
+        <Route exact path= '/feedbackApply' component={ feedbackApply } />
         <Route exact path= '/feedback' component={ feedback } />
         <Route exact path= '/coupon' component={ coupon } />
 
@@ -38,9 +40,6 @@ function App() {
         <Route exact path= '/product' component={product} />
         <Route exact path= '/productPage' component={productPage} />
         <Route exact path= '/cartPage' component={cartPage} />
-
-
-        <Route exact path= '/register' component={ register } />
 
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
