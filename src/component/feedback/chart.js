@@ -21,11 +21,6 @@ export default function Chart() {
                     We were wondering if you could spare a few minutes to let us know
                 what we are getting right and what we can improve. If you are game just
                 click on the button below "Get Start"
-                hshcjknzfdhsidhfsdushjvnjkdfuyudhjsbdjgvbcnblKUDIFDC
-                SGFHGDFHJGFDSLHGURWYwgehgwb;
-                sahgdhgwsfhjsvfdc
-                ahguywegflad
-
             </p>
             <div>
             <br/>

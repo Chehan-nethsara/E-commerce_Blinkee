@@ -34,7 +34,7 @@ export default function Deposits() {
                 <Button
                     type="submit"
                     variant="contained"
-                    color="secondary"
+                    color="primary"
                     className={classes.feedbackBtn}
                 >
                     Get Start

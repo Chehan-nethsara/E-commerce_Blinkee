@@ -13,7 +13,7 @@ export default function Orders() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Title><h2>Reviews</h2></Title>
+            <Title><h2>Customer Reviews</h2></Title>
 
         </React.Fragment>
 

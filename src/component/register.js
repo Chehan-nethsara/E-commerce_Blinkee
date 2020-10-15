@@ -208,7 +208,7 @@ class RegisterComponent extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <MDBBtn type="submit" color="secondary">
+                                        <MDBBtn type="submit" color="primary">
                                             Create
                                         </MDBBtn>
                                     </form>
