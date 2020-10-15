@@ -3,16 +3,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("../images/bg_register.jpg");
 
 }
 .innerContainer{
     border: 1px solid grey;
     border-radius: 5px;
     box-shadow: 10px 10px #dadada;
+    background: #ffffff;
 }
 
 .background{
-    background-image: url("../images/register.jpg");
+    background-image: url("../images/img_register.jpg");
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;

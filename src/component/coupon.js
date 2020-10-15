@@ -48,16 +48,6 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'baseline',
         marginBottom: theme.spacing(2),
     },
-    footer: {
-        borderTop: `1px solid ${theme.palette.divider}`,
-        marginTop: theme.spacing(8),
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3),
-        [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing(6),
-            paddingBottom: theme.spacing(6),
-        },
-    },
 }));
 
 const tiers = [
@@ -93,29 +83,14 @@ const tiers = [
         buttonText: 'Contact us',
         buttonVariant: 'outlined',
     },
-    {
-        title: 'Enterprise',
-        price: '30',
-        description: [
-            '50 users included',
-            '30 GB of storage',
-            'Help center access',
-            'Phone & email support',
-        ],
-        buttonText: 'Contact us',
-        buttonVariant: 'outlined',
-    },
 ];
 
 export default function Pricing() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <CssBaseline />
-            <Container>
+            {/*<CssBaseline />*/}
                 <Navbar/>
-            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-            </AppBar>
             {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
@@ -168,7 +143,6 @@ export default function Pricing() {
                     ))}
                 </Grid>
             </Container>
-        </Container>
         </React.Fragment>
     );
 }
