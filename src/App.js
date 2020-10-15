@@ -9,21 +9,24 @@ import cart from "./component/cart";
 import about_us from "./component/about_us";
 import product from "./component/product";
 import productPage from "./component/productPage";
-
-
+import checkout from "./component/checkout";
+import shippingpolicy from "./component/shippingpolicy";
+import custom from "./component/custom";
+import FooterMain from "./component/Footer/footer";
 import cartPage from "./component/cartPage";
 import register from "./component/register";
 import discount from "./component/discount";
 import feedback from "./component/feedback"
 import coupon from "./component/coupon"
-
+import LoginPage from "./component/login";
+import dropshipping from "./component/dropshipping";
 
 function App() {
   return (
       <BrowserRouter>
     <div className="App">
       <Switch>
-        <Route exact path= '/home'component={ home } />
+        <Route exact path= '/home' component={ home } />
         <Route exact path='/navbar' component={ Navbar } />
         <Route exact path= '/register' component={ register } />
         <Route exact path= '/feedback' component={ feedback } />
@@ -40,6 +43,15 @@ function App() {
 
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
+        <Route exact path= '/dropshipping' component={ dropshipping } />
+
+        <Route exact path='/footer' component={ FooterMain } />
+        <Route exact path='/login' component={ LoginPage } />
+
+        <Route exact path='/checkout' component={ checkout } />
+        <Route exact path='/shippingpolicy' component={ shippingpolicy } />
+        <Route exact path='/custom' component={ custom } />
+
 
       </Switch>
 

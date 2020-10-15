@@ -20,9 +20,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import StarIcon from '@material-ui/icons/StarBorder';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-
-import Box from '@material-ui/core/Box'
+import Footer from './Footer/footer';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -119,20 +117,27 @@ export default function Blog() {
                 </main>
 
             </Container>
-
+        <br/>
+            <br/>
+            <br/>
 
             <Container maxWidth="lg">
             <Grid container spacing={4}>
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
-                <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
+                <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
                     About Blinkee
                 </Typography>
-                <Typography variant="h5" align="center" color="textSecondary" component="p">
+                <Typography variant="h7" align="center" color="textSecondary" component="p">
                    Magic Mattr's Brilliant Blinkees provides exciting glow in the dark toys , flashing, jewelary,
                 </Typography>
             </Container>
+                <br/>
+                <br/>
+                <br/>
             {/* End hero unit */}
             <Container maxWidth="md" component="main">
+                <br/>
+                <br/>
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
                         // Enterprise card is full width at sm breakpoint
@@ -175,6 +180,10 @@ export default function Blog() {
             </Container>
             </Grid>
             </Container>
+            <br/>
+            <br/>
+            <br/>
+            <Footer/>
         </React.Fragment>
     );
 }
