@@ -20,6 +20,11 @@ export default function Chart() {
                 what we are getting right and what we can improve. If you are game just
                 click on the button below "Get Start"
             </p>
+            <p>
+                We were wondering if you could spare a few minutes to let us know
+                what we are getting right and what we can improve. If you are game just
+                click on the button below "Get Start"
+            </p>
             <div>
                 <br/>
                 <Button
@@ -27,6 +32,7 @@ export default function Chart() {
                     variant="contained"
                     color="secondary"
                     className={theme.btnChart}
+                    // onClick={}
                 >
                     Get Start
                 </Button>

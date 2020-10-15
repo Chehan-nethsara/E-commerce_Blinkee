@@ -35,12 +35,6 @@ const useStyles = makeStyles((theme) => ({
     title: {
         flexGrow: 1,
     },
-    // appBarSpacer: theme.mixins.toolbar,
-    // content: {
-    //     flexGrow: 1,
-    //     height: '100vh',
-    //     overflow: 'auto',
-    // },
     container: {
         paddingTop: theme.spacing(3),
         paddingBottom: theme.spacing(15),
@@ -67,14 +61,11 @@ export default function Dashboard() {
     return (
         <div>
             <Navbar/>
-
             <div className={classes.root}>
                 <CssBaseline />
                 <main className={classes.content}>
-                    {/*<div className={classes.appBarSpacer} />*/}
                     <Container maxWidth="lg" className={classes.container}>
                         <Grid container spacing={3}>
-                            {/* Feedback Description */}
                             <Grid item xs={12} md={4} lg={3}>
                                 <Card className={classes.card}>
                                     {/*<Paper className={fixedHeightPaper}>*/}
@@ -82,7 +73,6 @@ export default function Dashboard() {
                                     {/*</Paper>*/}
                                 </Card>
                             </Grid>
-                            {/* Chart */}
                             <Grid item xs={12} md={8} lg={9}>
                                 <Card className={classes.cardChart}>
                                     {/*<Paper className={fixedHeightPaper}>*/}
@@ -90,8 +80,7 @@ export default function Dashboard() {
                                     {/*</Paper>*/}
                                 </Card>
                             </Grid>
-                            {/* Recent Orders */}
-                            <Grid item xs={12} md={8}>
+                            <Grid item xs={12}>
                                 <Paper className={classes.paper}>
                                     <Reviews/>
                                 </Paper>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { palette } from '@material-ui/system';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -36,10 +35,11 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(8, 0, 6),
     },
     cardHeader: {
-        backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[200] : theme.palette.grey[700],
+        backgroundColor: "#FC2222",
 
     },
     cardPricing: {
+        backgroundColor: "#FBFF7C",
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'baseline',
@@ -88,9 +88,7 @@ export default function Pricing() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            {/*<CssBaseline />*/}
             <Navbar/>
-            {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                     Available Coupons
@@ -101,11 +99,9 @@ export default function Pricing() {
                     consumer to make a purchase at an online
                 </Typography>
             </Container>
-            {/* End hero unit */}
             <Container maxWidth="md" component="main">
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
-                        // Enterprise card is full width at sm breakpoint
                         <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
                             <Card>
                                 <CardHeader
