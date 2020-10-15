@@ -19,6 +19,7 @@ import discount from "./component/discount";
 import feedback from "./component/feedback"
 import coupon from "./component/coupon"
 import dropshipping from "./component/dropshipping";
+import dropfaq from "./component/dropfaq";
 function App() {
   return (
       <BrowserRouter>
@@ -48,6 +49,7 @@ function App() {
         <Route exact path='/checkout' component={ checkout } />
         <Route exact path='/shippingpolicy' component={ shippingpolicy } />
         <Route exact path='/custom' component={ custom } />
+        <Route exact path= '/dropfaq' component= { dropfaq } />
 
 
       </Switch>
