@@ -21,6 +21,7 @@ import coupon from "./component/coupon"
 import LoginPage from "./component/login";
 import dropshipping from "./component/dropshipping";
 import feedbackApply from "./component/Feedback/feedbackApply";
+import dropfaq from "./component/dropfaq";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route exact path='/checkout' component={ checkout } />
         <Route exact path='/shippingpolicy' component={ shippingpolicy } />
         <Route exact path='/custom' component={ custom } />
+        <Route exact path= '/dropfaq' component= { dropfaq } />
 
 
       </Switch>
