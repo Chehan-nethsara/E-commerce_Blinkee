@@ -13,6 +13,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import dis01 from '../resources/images/dis01.jpg'
+import Footer from "./Footer/footer";
 
 const useStyles = makeStyles((theme) => ({
     root1: {
@@ -171,6 +172,7 @@ export default function ComplexGrid() {
                     </Grid>
                 </Paper>
             </div>
+            <Footer/>
         </div>
     );
 }
