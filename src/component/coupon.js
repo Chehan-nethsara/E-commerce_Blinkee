@@ -1,21 +1,18 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
+import { palette } from '@material-ui/system';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import navbar from "./navbar";
 import Navbar from "./navbar";
+import Button from "./Button/button";
+import Footer from "./Footer/footer";
+
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -39,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(8, 0, 6),
     },
     cardHeader: {
-        backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+        backgroundColor: theme.palette.type === 'dark' ? theme.palette.grey[200] : theme.palette.grey[700],
+
     },
     cardPricing: {
         display: 'flex',
@@ -48,61 +45,41 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'baseline',
         marginBottom: theme.spacing(2),
     },
-    footer: {
-        borderTop: `1px solid ${theme.palette.divider}`,
-        marginTop: theme.spacing(8),
-        paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3),
-        [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing(6),
-            paddingBottom: theme.spacing(6),
-        },
-    },
 }));
 
 const tiers = [
     {
-        title: 'Free',
-        price: '0',
-        description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-        buttonText: 'Sign up for free',
+        title: 'Discount Coupon',
+        price: '10% value',
+        description: [
+            'Best Offers',
+            'For orders above 25$',
+            'Few away from your fingertips'
+        ],
+        buttonText: 'Get',
         buttonVariant: 'outlined',
     },
     {
-        title: 'Pro',
+        title: 'Discount Coupon',
         subheader: 'Most popular',
-        price: '15',
+        price: '25% value',
         description: [
-            '20 users included',
-            '10 GB of storage',
-            'Help center access',
-            'Priority email support',
+            'Best Offers',
+            'For orders above 50$',
+            'Few away from your fingertips',
         ],
-        buttonText: 'Get started',
+        buttonText: 'Get',
         buttonVariant: 'contained',
     },
     {
-        title: 'Enterprise',
-        price: '30',
+        title: 'Discount Coupon',
+        price: '50% value',
         description: [
-            '50 users included',
-            '30 GB of storage',
-            'Help center access',
-            'Phone & email support',
+            'Best Offers',
+            'For orders above 75$',
+            'Few away from your fingertips',
         ],
-        buttonText: 'Contact us',
-        buttonVariant: 'outlined',
-    },
-    {
-        title: 'Enterprise',
-        price: '30',
-        description: [
-            '50 users included',
-            '30 GB of storage',
-            'Help center access',
-            'Phone & email support',
-        ],
-        buttonText: 'Contact us',
+        buttonText: 'Get',
         buttonVariant: 'outlined',
     },
 ];
@@ -111,19 +88,17 @@ export default function Pricing() {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <CssBaseline />
-            <Container>
-                <Navbar/>
-            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-            </AppBar>
+            {/*<CssBaseline />*/}
+            <Navbar/>
             {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                    Pricing
+                    Available Coupons
                 </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" component="p">
-                    Quickly build an effective pricing table for your potential customers with this layout.
-                    It&apos;s built with default Material-UI components with little customization.
+                    Digital coupons are discounts, offers and promotions offered by an online store to current or
+                    prospective customers. Similar to their tangible counterparts, coupons are aimed at enticing a
+                    consumer to make a purchase at an online
                 </Typography>
             </Container>
             {/* End hero unit */}
@@ -144,10 +119,7 @@ export default function Pricing() {
                                 <CardContent>
                                     <div className={classes.cardPricing}>
                                         <Typography component="h2" variant="h3" color="textPrimary">
-                                            ${tier.price}
-                                        </Typography>
-                                        <Typography variant="h6" color="textSecondary">
-                                            /mo
+                                            {tier.price}
                                         </Typography>
                                     </div>
                                     <ul>
@@ -159,7 +131,7 @@ export default function Pricing() {
                                     </ul>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth variant={tier.buttonVariant} color="secondary">
+                                    <Button  variant={tier.buttonVariant} color="warning">
                                         {tier.buttonText}
                                     </Button>
                                 </CardActions>
@@ -168,7 +140,9 @@ export default function Pricing() {
                     ))}
                 </Grid>
             </Container>
-        </Container>
+            <br/>
+            <Footer/>
         </React.Fragment>
+
     );
 }
