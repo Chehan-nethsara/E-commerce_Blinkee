@@ -51,6 +51,7 @@ function App() {
 
         <Route exact path='/checkout' component={ checkout } />
         <Route exact path='/shippingpolicy' component={ shippingpolicy } />
+
         <Route exact path='/custom' component={ custom } />
         <Route exact path='/forgotPassword' component={ ForgotPassword } />
         <Route exact path= '/dropfaq' component= { dropfaq } />
