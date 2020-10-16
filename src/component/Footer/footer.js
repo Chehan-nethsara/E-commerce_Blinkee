@@ -50,48 +50,36 @@ export default function FooterMain(props) {
                            <h5 className={classes.footerHead}>Our Services</h5>
                            {/*<ul className={classes.linksVertical} color={white}>*/}
 
-                                   <a href="#e3f2fd"  className={aClasses}>Return Policy</a>
+                                   <a href="/returnpolicy"  className={aClasses}>Return Policy</a>
                                <br/>
                                <br/>
 
-                                   <a href="#fff"  className={aClasses}>Resell & Dropshipping</a>
+                                   <a href="/dropshipping"  className={aClasses}>Resell & Dropshipping</a>
                                <br/>
                                <br/>
-                                   <a href="#pablo"  className={aClasses}>Presentation</a>
+                                   <a href="/about_us"  className={aClasses}>About Us</a>
                                <br/>
                                <br/>
-                                   <a href="#pablo"  className={aClasses}>Contact Us</a>
+                                   <a href="/contactus"  className={aClasses}>Contact Us</a>
                            {/*</ul>*/}
                        </GridItem>
                        <GridItem xs={12} sm={2} md={2}>
                            <h5 className={classes.footerHead}>Market</h5>
                            <div className={classes.linksVertical}>
-                                   <a href="#pablo" className={aClasses}>Sales FAQ</a>
+                                   <a href="/dropfaq" className={aClasses}>Sales FAQ</a>
 
                                <br/>
                                <br/>
 
-                                   <a href="#pablo"  className={aClasses}>How to register</a>
+                                   <a href="/register"  className={aClasses}>How to register</a>
 
                                <br/>
                                <br/>
 
-                                   <a href="#pablo"  className={aClasses}>Sell goods</a>
+                                   <a href="/shippingpolicy"  className={aClasses}>ShippingPolicy</a>
 
                                <br/>
                                <br/>
-
-                                   <a href="#pablo"  className={aClasses}>Receive Payment</a>
-
-                               <br/>
-                               <br/>
-
-                                   <a href="#pablo"  className={aClasses}>Transactions issues</a>
-
-                               <br/>
-                               <br/>
-
-                                   <a href="white"  className={aClasses}>Affiliates program</a>
 
                            </div>
                        </GridItem>
@@ -149,7 +137,7 @@ export default function FooterMain(props) {
                                &copy; {1900 + new Date().getYear()} , made with{" "}
                                <Favorite className={classes.icon} /> by{" "}
                                <a
-                                   href="https://www.creative-tim.com?ref=mkr-footer"
+                                   href="/"
                                    className={aClasses}
                                    target="_blank"
                                >
