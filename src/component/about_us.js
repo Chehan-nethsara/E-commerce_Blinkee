@@ -7,9 +7,7 @@ import Container from '@material-ui/core/Container';
 
 import MainFeaturedPost from './AboutUs/MainFeaturedPost';
 import FeaturedPost from './AboutUs/FeaturedPost';
-import Main from './AboutUs/Main';
-import Sidebar from './AboutUs/Sidebar';
-import image_about_us from '../resources/images/image_about_us.jpg';
+
 import Navbar from "./navbar";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -31,19 +29,19 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
     {
-        title: 'Free',
-        price: '0',
-        description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-        buttonText: 'Sign up for free',
+        title: 'FAQ',
+        price: '',
+        description: ['Quection & Answers', 'Help center access', 'Email support'],
+        buttonText: 'Faq',
         buttonVariant: 'outlined',
     },
     {
-        title: 'Pro',
+        title: 'RATING',
         subheader: 'Most popular',
-        price: '15',
+        price: '',
         description: [
-            '20 users included',
-            '10 GB of storage',
+           ,
+            'Rating products',
             'Help center access',
             'Priority email support',
         ],
@@ -51,11 +49,11 @@ const tiers = [
         buttonVariant: 'contained',
     },
     {
-        title: 'Enterprise',
-        price: '30',
+        title: 'CONTACT',
+        price: '',
         description: [
-            '50 users included',
-            '30 GB of storage',
+
+            'Contact details',
             'Help center access',
             'Phone & email support',
         ],
@@ -68,25 +66,48 @@ const mainFeaturedPost = {
     title: 'Title of a longer featured blog post',
     description:
         "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-    image: 'image_about_us',
+    image: 'https://source.unsplash.com/random',
+    imageSizes:'100',
     imgText: 'main image description',
 
 };
 
 const featuredPosts = [
     {
-        title: 'Featured post',
-        date: 'Nov 12',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        title: 'Our Value',
+        date: '',
+        description1:
+            '1) Biggest Varlety : we offer million of product at great. ',
+
+        description2:
+
+            '2) Best Price : we provide great value by offering competitive price',
+        description3:
+            '3) Fast & Deliver : we am to please our customers with fast delivery.' ,
+
+        description4:
+            '4) 100% protected : we provide 100% protection for your purchase. ' ,
+        description5:
+            '5) Biggest Varlety : we offer million of product at great. ' ,
         image: 'https://source.unsplash.com/random',
         imageText: 'Image Text',
     },
     {
         title: 'Post title',
-        date: 'Nov 11',
-        description:
-            'This is a wider card with supporting text below as a natural lead-in to additional content.',
+        date: '',
+        description1:
+            '1) Embrace product : we embrace & anticipate change. Change is growth ',
+
+        description2:
+
+            '2) Customer commaltment : we belive in giving the best to our customers, sellers and society',
+        description3:
+            '3) Intergrity : we treat our patners and each other in mutual respectand work formutual benifit.' ,
+
+        description4:
+            '4) Ownership : we know our priotrities & we do something, we do it with focus. ' ,
+        description5:
+            '5) Biggest Varlety : we offer million of product at great. ' ,
         image: 'https://source.unsplash.com/random',
         imageText: 'Image Text',
     },
@@ -108,6 +129,19 @@ export default function Blog() {
                 
                 <main>
                     <MainFeaturedPost post={mainFeaturedPost} />
+                    <Container maxWidth="lg" component="main" className={classes.heroContent}>
+                        <Typography component="h4" variant="h4" align="center" color="primary" gutterBottom>
+                            About Blinkee
+                        </Typography>
+                        <Typography variant="h7" align="left" color="textSecondary" component="p">
+                            Magic Matt's Brilliant Blinkys provides exciting glow in the dark toys, flashing jewelry, blinking pins, flashy Blinkys and accessories for the twenty-first century.
+
+                            Magic Matt has been a vendor of light up novelties, and flashing toys online and in person for over 15 years. Over the years we've built up a great reputation of quality and service. Here are some references:
+                        </Typography>
+                    </Container>
+                    <br/>
+                    <br/>
+                    <br/>
                     <Grid container spacing={4}>
                         {featuredPosts.map((post) => (
                             <FeaturedPost key={post.title} post={post} />
@@ -123,14 +157,14 @@ export default function Blog() {
 
             <Container maxWidth="lg">
             <Grid container spacing={4}>
-            <Container maxWidth="sm" component="main" className={classes.heroContent}>
-                <Typography component="h4" variant="h4" align="center" color="textPrimary" gutterBottom>
-                    About Blinkee
-                </Typography>
-                <Typography variant="h7" align="center" color="textSecondary" component="p">
-                   Magic Mattr's Brilliant Blinkees provides exciting glow in the dark toys , flashing, jewelary,
-                </Typography>
-            </Container>
+                <Container maxWidth="xl" component="main" className={classes.heroContent}>
+
+                    <Typography variant="h7" align="center" color="primary" component="p">
+
+
+                   Magic Matt's Brilliant Blinkys only carries the highest quality products. Your satisfaction is guaranteed. Blinkee.com is owned and operated by Matt Jacobs.
+                    </Typography>
+                </Container>
                 <br/>
                 <br/>
                 <br/>
@@ -157,7 +191,7 @@ export default function Blog() {
                                             ${tier.price}
                                         </Typography>
                                         <Typography variant="h6" color="textSecondary">
-                                            /mo
+
                                         </Typography>
                                     </div>
                                     <ul>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
+//import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -11,37 +11,19 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles , withStyles} from '@material-ui/core/styles';
+import {createMuiTheme, makeStyles, withStyles} from '@material-ui/core/styles';
 import Navbar from './navbar';
-import Container from '@material-ui/core/Container';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-
-import IconButton from '@material-ui/core/IconButton';
-
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import {purple, red} from '@material-ui/core/colors';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
-
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
@@ -57,8 +39,13 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
-
+import {ThemeProvider} from "@material-ui/styles";
+import Alert from "@material-ui/lab/Alert";
+import Button from "./Button/button";
+import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import RemoveIcon from '@material-ui/icons/Remove';
+import AddIcon from '@material-ui/icons/Add';
+import ExposurePlus1Icon from '@material-ui/icons/ExposurePlus1';
 
 function preventDefault(event) {
     event.preventDefault();
@@ -76,7 +63,7 @@ function Copyright() {
     );
 }
 const products = [
-    { name: 'Shipping ', desc: '', price: 'colombo 07 - fort' },
+
     { name: 'Subtotal >', desc: '', price: '$3.45' },
 
 ];
@@ -194,9 +181,9 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(10),
-        marginLeft: theme.spacing(false),
-        marginRight: theme.spacing(37),
+        marginBottom: theme.spacing(false),
+        marginLeft: theme.spacing(3),
+        marginRight: theme.spacing(35),
         height: 40,
         width: 451.7,
         padding: '0 30px',
@@ -281,10 +268,72 @@ const useStyles = makeStyles((theme) => ({
         left: 'calc(50% - 9px)',
         transition: theme.transitions.create('opacity'),
     },
+
+    buttonsss: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+
+
+    },
+    buttonss: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(58),
+        marginRight: theme.spacing(4),
+    },
+    buttonss1: {
+        marginTop: theme.spacing(5),
+        marginBottom: theme.spacing(10),
+        marginLeft: theme.spacing(4),
+        marginRight: theme.spacing(10),
+    },
+    roots: {
+        margin: 0,
+        padding: theme.spacing(2),
+    },
+    closeButton: {
+        position: 'absolute',
+        right: theme.spacing(1),
+        top: theme.spacing(1),
+        color: theme.palette.grey[500],
+    },
+    but:{
+        display:"block",
+        marginLeft:theme.spacing(85),
+    },
+    but1:{
+        display:"block",
+        marginLeft:theme.spacing(25),
+    },
+    but2:{
+        display:"block",
+        marginLeft:theme.spacing(1),
+    },
+    blog:{
+        marginRight:'200px',
+    },
+    shio:{
+        marginLeft:theme.spacing(32),
+    },
+    shio1:{
+        marginLeft:theme.spacing(0),
+    },
 }));
+const theme = createMuiTheme({
+    palette: {
+        primarys: {
+            // Purple and green play nicely together.
+            main: purple[500],
+        },
+
+    },
+
+});
 
 const message = `Truncation should be conditionally applicable on this long line of text
  as this is a much longer line than what the container can support. `;
+
+
 
 export default function SignInSide() {
     const classes = useStyles();
@@ -302,13 +351,31 @@ export default function SignInSide() {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const [opens, setOpens] = React.useState(false);
+    const handleClickOpens = () => {
+        setOpens(true);
+    };
+    const handleCloses = () => {
+        setOpens(false);
+    };
+    const [openss, setOpenss] = React.useState(false);
+
+    const handleClickOpen1 = () => {
+        setOpenss(true);
+    };
+    const handleClose2 = () => {
+        setOpenss(false);
+    };
+
     return (
-        <Container  component="main" maxWidth="full">
+        // <Container  component="main"  color="success">
+        <div>
             <Navbar/>
-            <Container  component="main" maxWidth="full" color="default" >
+            {/*<Container  component="main" maxWidth="full" color="default" >*/}
 
 
-                <Grid container component="main" className={classes.root} >
+                <Grid container component="main" className={classes.root}  >
                     <CssBaseline />
 
                     <Grid item xs={false} sm={4} md={7} component={Paper} elevation={1} square >
@@ -328,23 +395,24 @@ export default function SignInSide() {
                                 </Toolbar>
                                 <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
                                     <Paper elevation={2} />
+                                    <AccordionSummary>
+                                    <FormControlLabel
+                                        aria-label="Acknowledge"
+                                        onClick={(event) => event.stopPropagation()}
+                                        onFocus={(event) => event.stopPropagation()}
+                                        control={<Checkbox />}
+                                        label="Select All"
+                                    />
+                                        <Grid item xs={false} sm={4} md={14} component={Paper} elevation={false} square>
+                                        <Button className={classes.but}
 
 
-                                    <AccordionSummary
-                                        expandIcon={<DeleteIcon/>}
-                                        aria-label="Expand"
-                                        aria-controls="additional-actions1-content"
-                                        id="additional-actions1-header"
-                                    >
-                                        <Button
-                                            variant="contained"
-
-
-                                            expandIcon={ <DeleteIcon /> }
+color={"transparent"}
+                                            startIcon={ <DeleteIcon /> }
                                             onClick={ handleClickOpen }
                                         >
-
                                         </Button>
+                                        </Grid>
 
                                         <Dialog
                                             open={open}
@@ -365,17 +433,12 @@ export default function SignInSide() {
                                                 <Button onClick={handleClose} color="primary" autoFocus>
                                                     REMOVE
                                                 </Button>
+
                                             </DialogActions>
                                         </Dialog>
-                                        <FormControlLabel
-                                            aria-label="Acknowledge"
-                                            onClick={(event) => event.stopPropagation()}
-                                            onFocus={(event) => event.stopPropagation()}
-                                            control={<Checkbox />}
-                                            label="Select All"
-                                        />
-
                                     </AccordionSummary>
+
+
                                 </Grid>
 
                             </AppBar>
@@ -401,46 +464,141 @@ export default function SignInSide() {
                                     onClick={(event) => event.stopPropagation()}
                                     onFocus={(event) => event.stopPropagation()}
                                     control={<Checkbox />}
-                                    label="Product"
+
                                 />
-                                <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
-                                    Brand / More products
-                                </Box>
+                                <ThemeProvider theme={theme} textAlign="center">
 
+                                    <Button className={classes.shio1} color={"transparent"} href="product">Product Name></Button>
+                                </ThemeProvider>
 
-                                <Typography component="legend" variant="h6">
-                                    <Box color="info.main" textAlign="left">RS 3000</Box>
-                                </Typography>
-                                <Box color="error.main">27%</Box>
-
-                                <Typography component="div">
-                                    <Box textAlign="justify" m={1}>
-                                        Promotion
-                                    </Box>
-                                </Typography>
                             </AccordionSummary>
-                            <Grid container spacing={0}>
-                                <Grid item>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                                onClick={handleClickOpen1}
+                            >
+                                <Dialog onClose={handleClose2} aria-labelledby="customized-dialog-title" open={openss}>
+                                    <DialogTitle id="customized-dialog-title" onClose={handleClose2 }>
+
+                                    </DialogTitle>
+                                    <DialogContent dividers>
+                                        <Typography gutterBottom>
+                                            Use Code: 45fg
+
+                                        </Typography>
+                                        <Typography variant="h8"gutterBottom>
+
+                                            <Box color="error.main">$20</Box>
+                                        </Typography>
+                                        <Typography variant="h8" gutterBottom>
+
+                                            <Box color="error.main">Min spend $100</Box>
+                                        </Typography>
+                                        <Typography variant="h9" gutterBottom>
+                                            2020.09.10 - 2020.09.15
+                                        </Typography>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button autoFocus onClick={handleClose2} color="transparent">
+                                            Collect
+                                        </Button>
+                                    </DialogActions>
+                                    <DialogTitle id="customized-dialog-title" onClose={handleClose2 }>
+
+                                    </DialogTitle>
+                                    <DialogContent dividers>
+                                        <Typography gutterBottom>
+
+                                            Use Code: 40fg
+                                        </Typography>
+                                        <Typography variant="h8" gutterBottom>
+
+                                            <Box color="error.main">$100</Box>
+                                        </Typography>
+                                        <Typography  variant="h8" gutterBottom>
+
+                                            <Box color="error.main">Min spend $100</Box>
+                                        </Typography>
+                                        <Typography variant="h9" gutterBottom>
+                                            2020.09.10 - 2020.09.15
+                                        </Typography>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button autoFocus onClick={handleClose2} color="transparent">
+                                            Collect
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+                            </AccordionSummary>
+                            <Grid container >
+                                <Grid  item xs={12} lg={3} md={8}>
+
                                     <ButtonBase className={classes.image}>
                                         <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
                                     </ButtonBase>
                                 </Grid>
+                                    <Grid item xs={12} lg={9} md={8}>
+                                        <div className={classes.blog}>
+                                    <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                        product name
+                                    </Box>
+                                    <Typography component="legend" variant="h6">
+                                        <Box color="info.main" textAlign="center">$ 3000</Box>
+                                    </Typography>
+                                    <Box color="error.main">27%</Box>
+
+                                    <Typography component="div">
+                                        <Box textAlign="center" m={1}>
+Qty1
+                                        </Box>
+                                    </Typography>
+                                            <Button className={classes.but1}
+                                                    color={"transparent"}
+                                                    startIcon={ <DeleteIcon /> }
+                                                    onClick={ handleClickOpen }
+                                            >
+                                            </Button>
+
+
+                                <Dialog
+                                    open={open}
+                                    onClose={handleClose}
+                                    aria-labelledby="alert-dialog-title"
+                                    aria-describedby="alert-dialog-description"
+                                >
+                                    <DialogTitle id="alert-dialog-title">{"Remove from cart"}</DialogTitle>
+                                    <DialogContent>
+                                        <DialogContentText id="alert-dialog-description">
+                                            Are you sure you want to delete these item(s)?
+                                        </DialogContentText>
+                                    </DialogContent>
+                                    <DialogActions>
+                                        <Button onClick={handleClose} color="transparent">
+                                            CANCEL
+                                        </Button>
+                                        <Button onClick={handleClose} color="facebook" autoFocus>
+                                            REMOVE
+                                        </Button>
+                                    </DialogActions>
+                                </Dialog>
+
+                                            <Button className={classes.but2}
+                                                    color={"transparent"}
+                                                    startIcon={ <FavoriteBorderOutlinedIcon /> }
+
+                                            >
+                                            </Button>
+
+
+                                        </div>
+                                    </Grid>
+
                             </Grid>
-                            <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
-                                Brand / More products
-                            </Box>
 
 
-                            <Typography component="legend" variant="h6">
-                                <Box color="info.main" textAlign="left">RS 3000</Box>
-                            </Typography>
-                            <Box color="error.main">27%</Box>
 
-                            <Typography component="div">
-                                <Box textAlign="justify" m={1}>
-                                    Promotion
-                                </Box>
-                            </Typography>
+
                         </Grid>
 
                         <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
@@ -455,11 +613,91 @@ export default function SignInSide() {
                                         label="Product"
                                     />
                                 </AccordionSummary>
-                            <Grid container spacing={0}>
-                                <Grid item>
+                            <Grid container >
+                                <Grid  item xs={12} lg={3} md={8}>
+
                                     <ButtonBase className={classes.image}>
                                         <img className={classes.image} alt="complex" src={image_cartPage_1} style={{ cursor: 'pointer' }} />
                                     </ButtonBase>
+                                </Grid>
+                                <Grid item xs={12} lg={9} md={8}>
+                                    <div className={classes.blog}>
+                                        <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
+                                            product name
+                                        </Box>
+                                        <Typography component="legend" variant="h6">
+                                            <Box color="info.main" textAlign="center">RS 3000</Box>
+                                        </Typography>
+                                        <Box color="error.main">27%</Box>
+
+                                        <Typography component="div">
+                                            <Box textAlign="center" m={1}>
+Qty2
+                                            </Box>
+                                        </Typography>
+                                        <Button className={classes.but1}
+                                                color={"transparent"}
+                                                startIcon={ <DeleteIcon /> }
+                                                onClick={ handleClickOpen }
+                                        >
+                                        </Button>
+
+
+                                        <Dialog
+                                            open={open}
+                                            onClose={handleClose}
+                                            aria-labelledby="alert-dialog-title"
+                                            aria-describedby="alert-dialog-description"
+                                        >
+                                            <DialogTitle id="alert-dialog-title">{"Remove from cart"}</DialogTitle>
+                                            <DialogContent>
+                                                <DialogContentText id="alert-dialog-description">
+                                                    Are you sure you want to delete these item(s)?
+                                                </DialogContentText>
+                                            </DialogContent>
+                                            <DialogActions>
+                                                <Button onClick={handleClose} color="transparent">
+                                                    CANCEL
+                                                </Button>
+                                                <Button onClick={handleClose} color="primary" autoFocus>
+                                                    REMOVE
+
+                                                </Button>
+                                            </DialogActions>
+                                        </Dialog>
+                                    </div>
+                                </Grid>
+
+                            </Grid>
+
+                        </Grid>
+
+                        <Grid item xs={false} sm={4} md={12} component={Paper} elevation={2} square>
+                            <Paper elevation={2} />
+
+
+                            <Grid container spacing={0}>
+                                <Grid item>
+                                    <div className={classes.buttonsss}>
+
+                                        <Button  className={classes.buttonss1} variant="outlined" color="twitter" href="/product">
+                                            Back to shop
+                                        </Button>
+
+                                        <Button
+
+                                            variant="contained"
+                                            color="twitter"
+
+                                            className={classes.buttonss}
+
+                                        >
+                                            Update
+
+                                        </Button>
+
+                                        {/*<Alert onClose={() => {}}>This is a success alert — check it out!</Alert>*/}
+                                    </div>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -467,6 +705,7 @@ export default function SignInSide() {
 
                     </Grid>
 
+                    <br/><br/><br/>
 
 
 
@@ -507,12 +746,62 @@ export default function SignInSide() {
 
                                                     <TextField id="outlined-basic" label="Enter coupon code" variant="outlined" />
                                                 </FormControl>
-                                                <Button variant="contained" color="primary" className={classes.buttons}>
+                                                <Button variant="contained" color="facebook" className={classes.buttons}>
                                                     Apply
                                                 </Button>
                                             </AccordionDetails>
                                         </Accordion>
                                     </Grid>
+
+                            <Grid item xs={false} sm={4} md={12} component={Paper} elevation={0} square>
+                                <Paper elevation={0} />
+
+                                    <AccordionSummary
+
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <Typography className={classes.heading}>Shipping</Typography>
+                                        <Grid item xs={false} sm={4} md={12}  elevation={0} square>
+
+                                        <ThemeProvider theme={theme} textAlign="center">
+
+                                            <Button className={classes.shio} color={"transparent"} onClick={handleClickOpens}>Colombo 07-fort</Button>
+
+
+                                            <Dialog open={opens} onClose={handleCloses} aria-labelledby="form-dialog-title">
+
+                                                <DialogContent>
+                                                    <TextField
+                                                        autoFocus
+                                                        margin="dense"
+                                                        id="name"
+                                                        label="City"
+                                                        type="city"
+                                                        fullWidth
+                                                    />
+                                                    <TextField
+                                                        autoFocus
+                                                        margin="dense"
+                                                        id="name"
+                                                        label="Post code/ Zip"
+                                                        type="zip"
+                                                        fullWidth
+                                                    />
+                                                </DialogContent>
+                                                <DialogActions>
+
+                                                    <Button onClick={handleCloses} color="primary">
+                                                       Update
+                                                    </Button>
+                                                </DialogActions>
+                                            </Dialog>
+
+                                        </ThemeProvider>
+                                        </Grid>
+
+                                    </AccordionSummary>
+                            </Grid>
 
 
 
@@ -536,7 +825,7 @@ export default function SignInSide() {
                                     <Button
 
                                         variant="contained"
-                                        color="secondary"
+                                        color="danger"
 
                                         className={classes.button}
                                     >
@@ -552,8 +841,26 @@ export default function SignInSide() {
 
 
                 </Grid>
-            </Container>
+            {/*</Container>*/}
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <Footer/>
-        </Container>
+            </div>
+        // </Container>
     );
 }
