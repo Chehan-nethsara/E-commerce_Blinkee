@@ -116,7 +116,7 @@ export default function ForgotPassword(props) {
                                         />
                                     </CardBody>
                                     <CardFooter className={classes.cardFooter}>
-                                        <Button  href="/home" color="danger" size="sm" round>
+                                        <Button  href="/" color="danger" size="sm" round>
                                             Update
                                         </Button>
                                     </CardFooter>
