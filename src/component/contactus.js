@@ -7,6 +7,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "./Button/button";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContentText from "@material-ui/core/DialogContentText";
 import Navbar from "./navbar";
 import Footer from "./Footer/footer";
 
@@ -15,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://www.stjohns.k12.fl.us/transportation/wp-content/uploads/sites/32/2018/09/CallEmailTextpng.png)',
+        backgroundImage: 'url(https://previews.123rf.com/images/279photo/279photo1705/279photo170502196/78576867-e-mail-contact-us-concept-with-internet-icons-and-mobile-on-dark-work-desk-background-top-view-mocku.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
@@ -32,14 +37,24 @@ const useStyles = makeStyles((theme) => ({
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
-    submit: {
+    sub01: {
         margin: theme.spacing(3, 0, 2),
-        marginLeft: "250px"
+        marginLeft: "50px"
     },
 }));
 
 export default function SignInSide() {
     const classes = useStyles();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    }
 
     return (
         <div>
@@ -92,13 +107,27 @@ export default function SignInSide() {
                                 type="submit"
                                 variant="contained"
                                 color="facebook"
-                                className={classes.submit}
+                                onClick={handleClickOpen}
+                                className={classes.sub01}
                             >
                                 Send
                             </Button>
+                            <Dialog
+                                open={open}
+                                onClose={handleClose}
+                                aria-labelledby="alert-dialog-title"
+                                aria-describedby="alert-dialog-description"
+                            >
+                                <DialogTitle id="alert-dialog-title">{"Thank You!"}</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText id="alert-dialog-description">
+                                        Your Message has been sent.
+                                    </DialogContentText>
+                                </DialogContent>
+                            </Dialog>
                             <Grid container>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+                                    <Link href="/register" variant="body2">
                                         {"Don't have an account? Sign Up"}
                                     </Link>
                                 </Grid>

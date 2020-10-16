@@ -21,6 +21,9 @@ import coupon from "./component/coupon"
 import LoginPage from "./component/login";
 import dropshipping from "./component/dropshipping";
 import dropfaq from "./component/dropfaq";
+import privancypolicy from "./component/privancypolicy";
+import returnpolicy from "./component/returnpolicy"
+
 
 function App() {
   return (
@@ -53,7 +56,8 @@ function App() {
         <Route exact path='/shippingpolicy' component={ shippingpolicy } />
         <Route exact path='/custom' component={ custom } />
         <Route exact path= '/dropfaq' component= { dropfaq } />
-
+        <Route exact path= '/privancypolicy' component= { privancypolicy } />
+        <Route exact path= '/returnpolicy' component= { returnpolicy } />
 
       </Switch>
 

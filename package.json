@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/system": "latest",
-    "classnames": "latest",
-    "markdown-to-jsx": "^5.2.0",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "@material-ui/system": "latest",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.2",
+    "classnames": "latest",
+    "markdown-to-jsx": "^5.2.0",
     "mdbreact": "^4.27.0",
     "prop-types": "latest",
     "react": "^16.13.1",
@@ -19,6 +19,7 @@
     "react-scripts": "3.4.3",
     "react-slick": "^0.27.11",
     "react-stick": "^4.0.2",
+    "react-swipeable-views": "^0.13.9",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {
