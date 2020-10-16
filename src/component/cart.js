@@ -632,7 +632,7 @@ Qty1
 
                                         <Typography component="div">
                                             <Box textAlign="center" m={1}>
-Qty1
+Qty2
                                             </Box>
                                         </Typography>
                                         <Button className={classes.but1}
