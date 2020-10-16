@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
 import Navbar from "./navbar";
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,7 +10,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
+import Button from "./Button/button";
 import dis01 from '../resources/images/dis01.jpg'
 import Footer from "./Footer/footer";
 
@@ -30,18 +29,17 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         maxWidth: 2000,
     },
-    image: {
-        width: 400,
-        height: 400,
-    },
     img: {
         margin: 'auto',
         display: 'block',
         maxWidth: '100%',
         maxHeight: '100%',
+        width: 400,
+        height: 400,
     },
     margin: {
         margin: theme.spacing(2),
+        marginLeft: "690px"
     },
     extendedIcon: {
         marginRight: theme.spacing(1),
@@ -96,9 +94,9 @@ export default function ComplexGrid() {
                                 style={{color: "blue"}}>
                                 Funny Party Luminous Glasses
                             </h2>
-                            <ButtonBase className={classes.image}>
+
                                 <img className={classes.img} alt="complex" src={dis01} />
-                            </ButtonBase>
+
                             <h2
                                 style={{color: "red"}}>
                                 $ 12.00
@@ -161,9 +159,11 @@ export default function ComplexGrid() {
                                         <Button
                                             variant="contained"
                                             size="large"
-                                            color="primary"
+                                            color="facebook"
+                                            href="/cart"
                                             className={classes.margin}>
-                                            Add to Card
+                                            Add to Cart
+
                                         </Button>
                                     </form>
                                 </Grid>
