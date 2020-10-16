@@ -13,13 +13,16 @@ import checkout from "./component/checkout";
 import shippingpolicy from "./component/shippingpolicy";
 import custom from "./component/custom";
 import FooterMain from "./component/Footer/footer";
-
-
 import cartPage from "./component/cartPage";
 import register from "./component/register";
 import discount from "./component/discount";
 import feedback from "./component/feedback"
 import coupon from "./component/coupon"
+import LoginPage from "./component/login";
+import dropshipping from "./component/dropshipping";
+import ForgotPassword from "./component/forgotPwd";
+import feedbackApply from "./component/Feedback/feedbackApply";
+import dropfaq from "./component/dropfaq";
 
 function App() {
   return (
@@ -29,6 +32,7 @@ function App() {
         <Route exact path= '/home' component={ home } />
         <Route exact path='/navbar' component={ Navbar } />
         <Route exact path= '/register' component={ register } />
+        <Route exact path= '/feedbackApply' component={ feedbackApply } />
         <Route exact path= '/feedback' component={ feedback } />
         <Route exact path= '/coupon' component={ coupon } />
 
@@ -38,19 +42,19 @@ function App() {
         <Route exact path= '/productPage' component={productPage} />
         <Route exact path= '/cartPage' component={cartPage} />
 
-
-        <Route exact path= '/register' component={ register } />
-
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
+        <Route exact path= '/dropshipping' component={ dropshipping } />
 
         <Route exact path='/footer' component={ FooterMain } />
+        <Route exact path='/login' component={ LoginPage } />
 
         <Route exact path='/checkout' component={ checkout } />
         <Route exact path='/shippingpolicy' component={ shippingpolicy } />
 
         <Route exact path='/custom' component={ custom } />
-
+        <Route exact path='/forgotPassword' component={ ForgotPassword } />
+        <Route exact path= '/dropfaq' component= { dropfaq } />
 
       </Switch>
 

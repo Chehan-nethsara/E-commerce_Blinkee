@@ -13,6 +13,9 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import blinkee from '../resources/images/blinkee.png';
+import home from "./home";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -38,8 +41,8 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 2,
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            marginLeft: theme.spacing(3),
-            width: 'auto',
+            marginLeft: theme.spacing(8),
+            width: '50%',
         },
     },
     searchIcon: {
@@ -164,9 +167,18 @@ export default function Navbar() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" noWrap>
-                       Blinkee
-                    </Typography>
+                    <Button href="/home">
+                        <div>
+                            <img
+                                src={blinkee}
+                                alt="First slide"
+                                className="slick-image"
+                            />
+                        </div>
+                    </Button>
+                    {/*<Typography className={classes.title} variant="h6" noWrap>*/}
+                    {/*   Blinkee*/}
+                    {/*</Typography>*/}
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon />
@@ -180,6 +192,7 @@ export default function Navbar() {
                             inputProps={{ 'aria-label': 'search' }}
                         />
                     </div>
+
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
 
