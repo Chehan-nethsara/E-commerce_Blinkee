@@ -496,7 +496,7 @@ function ResponsiveDrawer(props) {
                                     />
                                     <CardContent className={classes.cardContent}>
                                         <Typography gutterBottom variant="h6" >
-                                            necklace
+                                            Necklace
                                         </Typography>
                                         <Typography>
                                             $500/-
@@ -507,7 +507,7 @@ function ResponsiveDrawer(props) {
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -542,18 +542,18 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Ring
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -588,18 +588,18 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Necklace
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -635,18 +635,18 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                           Earings
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -682,18 +682,18 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Necklace
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary"href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -729,18 +729,18 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            necklace
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                             $ 500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -776,18 +776,18 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Necklace
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Button size="small" color="primary" href="/productPage">
                                             View
                                         </Button>
-                                        <Button size="small" color="primary">
+                                        <Button size="small" color="primary" href="/discount">
                                             Discount
                                         </Button>
                                     </CardActions>
@@ -823,11 +823,11 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Ring
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                             $ 500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -870,11 +870,11 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Necklace
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -918,11 +918,11 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Earing
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -965,11 +965,11 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Ring
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
@@ -1012,11 +1012,11 @@ function ResponsiveDrawer(props) {
 
                                     />
                                     <CardContent className={classes.cardContent}>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            Product
+                                        <Typography gutterBottom variant="h6">
+                                            Ring
                                         </Typography>
                                         <Typography>
-                                            RS 500/-
+                                            $ 500/-
                                         </Typography>
                                     </CardContent>
                                     <CardActions>

@@ -516,7 +516,7 @@ export default function SignInSide() {
                     <div style={{ width: 300 }}>
                         <Box component="fieldset" mb={2} borderColor="transparent" textAlign="left">
                         <Typography variant="h6" color="inherit" textAlign="left" >
-                        Product Name
+                            Necklace
                         </Typography>
                         </Box>
                         <Box component="fieldset" mb={0} borderColor="transparent" textAlign="left">
@@ -613,7 +613,7 @@ export default function SignInSide() {
                             </Box>
 
                             <Box textAlign="left" m={1}>
-                                Quntity
+                                Quntity 1
                             </Box>
                             <Box textAlign="center" m={1}>
                                 <div className={classes.buttonss}>
@@ -665,7 +665,7 @@ export default function SignInSide() {
                                                                 </Grid>
                                                                 <Grid item xs>
                                                                     <Typography variant="body2" gutterBottom>
-                                                                        product name
+                                                                        Necklace
                                                                     </Typography>
                                                                     <Typography variant="body2" color="textSecondary">
                                                                         $34
@@ -744,35 +744,113 @@ export default function SignInSide() {
                                                     <Container className={classes.cardGrids} maxWidth="md">
                                                         {/* End hero unit */}
                                                         <Grid container spacing={9}>
-                                                            {cards.map((card) => (
+                                                            {[0].map((card) => (
                                                                 <Grid item key={card} xs={10} sm={5} md={3}>
-                                                                    <Card className={classes.cards}>
+                                                                    <Card className={classes.card}>
                                                                         <CardMedia
-                                                                            className={classes.cardMedias}
-                                                                            image="https://source.unsplash.com/random"
+                                                                            className={classes.cardMedia}
+
                                                                             title="Image title"
                                                                         />
-                                                                        <CardContent className={classes.cardContents}>
-                                                                            <Typography gutterBottom variant="h5" component="h2">
-                                                                                Product Name
+                                                                        <img
+                                                                            style={{height: "100px", width: "100%"}}
+
+                                                                            src={ image_pr_6}
+
+                                                                        />
+                                                                        <CardContent className={classes.cardContent}>
+                                                                            <Typography gutterBottom variant="h7" >
+                                                                                Ring
                                                                             </Typography>
                                                                             <Typography>
-                                                                                RS 500/-
+                                                                                $5
                                                                             </Typography>
                                                                         </CardContent>
-                                                                        <CardActions>
-                                                                            <DialogActions>
-                                                                            <Button size="small" color="transparent" >
-                                                                                View
-                                                                            </Button>
-                                                                            <Button size="small" color="transparent" onClick={handleCloses}>
-                                                                                Edit
-                                                                            </Button>
-                                                                            </DialogActions>
-                                                                        </CardActions>
+
                                                                     </Card>
                                                                 </Grid>
                                                             ))}
+
+
+                                                            {[0].map((card) => (
+                                                                <Grid item key={card} xs={10} sm={5} md={3}>
+                                                                    <Card className={classes.card}>
+                                                                        <CardMedia
+                                                                            className={classes.cardMedia}
+
+                                                                            title="Image title"
+                                                                        />
+                                                                        <img
+                                                                            style={{height: "100px", width: "100%"}}
+
+                                                                            src={ image_pr_7}
+
+                                                                        />
+                                                                        <CardContent className={classes.cardContent}>
+                                                                            <Typography gutterBottom variant="h7"  >
+                                                                                Neckless
+                                                                            </Typography>
+                                                                            <Typography>
+                                                                                $10
+                                                                            </Typography>
+                                                                        </CardContent>
+
+                                                                    </Card>
+                                                                </Grid>
+                                                            ))}
+                                                            {[0].map((card) => (
+                                                                <Grid item key={card} xs={10} sm={5} md={3}>
+                                                                    <Card className={classes.card}>
+                                                                        <CardMedia
+                                                                            className={classes.cardMedia}
+
+                                                                            title="Image title"
+                                                                        />
+                                                                        <img
+                                                                            style={{height: "100px", width: "100%"}}
+
+                                                                            src={ image_pr_9}
+
+                                                                        />
+
+                                                                        <CardContent className={classes.cardContent}>
+                                                                            <Typography gutterBottom variant="h7"  >
+                                                                                Earings
+                                                                            </Typography>
+                                                                            <Typography>
+                                                                                $50
+                                                                            </Typography>
+                                                                        </CardContent>
+                                                                    </Card>
+                                                                </Grid>
+                                                            ))}
+                                                            {[0].map((card) => (
+                                                                <Grid item key={card} xs={10} sm={5} md={3}>
+                                                                    <Card className={classes.card}>
+                                                                        <CardMedia
+                                                                            className={classes.cardMedia}
+
+                                                                            title="Image title"
+                                                                        />
+                                                                        <img
+                                                                            style={{height: "100px", width: "100%"}}
+
+                                                                            src={ image_pr_10}
+
+                                                                        />
+                                                                        <CardContent className={classes.cardContent}>
+                                                                            <Typography gutterBottom variant="h7"  >
+                                                                                bangles
+                                                                            </Typography>
+                                                                            <Typography>
+                                                                                $100
+                                                                            </Typography>
+                                                                        </CardContent>
+
+                                                                    </Card>
+                                                                </Grid>
+                                                            ))}
+
                                                         </Grid>
 
                                                     </Container>
@@ -1055,7 +1133,7 @@ export default function SignInSide() {
                                         />
                                         <CardContent className={classes.cardContent}>
                                             <Typography gutterBottom variant="h7"  >
-                                                Product
+                                                Neckless
                                             </Typography>
                                             <Typography>
                                                 $10
@@ -1082,7 +1160,7 @@ export default function SignInSide() {
 
                                         <CardContent className={classes.cardContent}>
                                             <Typography gutterBottom variant="h7"  >
-                                                Product
+                                                Earings
                                             </Typography>
                                             <Typography>
                                                 $50
@@ -1107,7 +1185,7 @@ export default function SignInSide() {
                                         />
                                         <CardContent className={classes.cardContent}>
                                             <Typography gutterBottom variant="h7"  >
-                                                Product
+                                                bangles
                                             </Typography>
                                             <Typography>
                                                 $100
