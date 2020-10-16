@@ -3,12 +3,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url("https://newbalanceloans.com/wp-content/uploads/2019/12/6.jpg");
 
 }
 .innerContainer{
     border: 1px solid grey;
     border-radius: 5px;
     box-shadow: 10px 10px #dadada;
+    background: #ffffff;
 }
 
 .background{

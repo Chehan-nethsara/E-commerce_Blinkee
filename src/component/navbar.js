@@ -14,6 +14,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import blinkee from '../resources/images/blinkee.png';
+import home from "./home";
+import Link from "@material-ui/core/Link";
+import login from "./login";
+import ListItem from "@material-ui/core/ListItem";
+import CustomDropdown from "./Header/customDropDown";
+import {Apps} from "@material-ui/icons";
+import List from "@material-ui/core/List";
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import blinkee_logo_5 from '../resources/images/blinkee_logo_5.jpg';
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -40,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         [theme.breakpoints.up('sm')]: {
             marginLeft: theme.spacing(8),
-            width: '50%',
+            width: '40%',
         },
     },
     searchIcon: {
@@ -115,7 +124,7 @@ export default function Navbar() {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem href= "/login" >Login</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem>
         </Menu>
     );
@@ -131,25 +140,27 @@ export default function Navbar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem>
-                <IconButton aria-label="show 11 new notifications" color="inherit">
-                    <Badge badgeContent={11} color="secondary">
-                       <AccountCircle/>
-                    </Badge>
-                </IconButton>
-                <p>Login</p>
-            </MenuItem>
-            <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    color="inherit"
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Sign-In</p>
-            </MenuItem>
+            <MenuItem onClick={handleMenuClose}>CartPage</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            {/*<MenuItem>*/}
+            {/*    <IconButton aria-label="show 11 new notifications" color="inherit">*/}
+            {/*        <Badge badgeContent={11} color="secondary">*/}
+            {/*           <AccountCircle/>*/}
+            {/*        </Badge>*/}
+            {/*    </IconButton>*/}
+            {/*    <p>Login</p>*/}
+            {/*</MenuItem>*/}
+            {/*<MenuItem onClick={handleProfileMenuOpen}>*/}
+            {/*    <IconButton*/}
+            {/*        aria-label="account of current user"*/}
+            {/*        aria-controls="primary-search-account-menu"*/}
+            {/*        aria-haspopup="true"*/}
+            {/*        color="inherit"*/}
+            {/*    >*/}
+            {/*        <AccountCircle />*/}
+            {/*    </IconButton>*/}
+            {/*    <p>Log-In</p>*/}
+            {/*</MenuItem>*/}
         </Menu>
     );
 
@@ -157,18 +168,86 @@ export default function Navbar() {
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Button>
+                    <List className={classes.list}>
+                        <ListItem className={classes.listItem}>
+                            <CustomDropdown
+                                noLiPadding
+                                buttonText="Category"
+                                buttonProps={{
+                                    className: classes.navLink,
+                                    color: "transparent"
+
+                                }}
+                                buttonIcon={Apps}
+                                dropdownList={[
+                                    <Link href= '/product' className={classes.dropdownLink}>
+                                        Jewellery
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Watches
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Perfumes
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Shoes & Heals
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Bloosam
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Women's Fashion
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Men's Watches
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Men's fashion
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Gifts
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Decorations
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Kids & Baby Items
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Beauty Health & Hair
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Bags & Shoes
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                       Toys
+                                    </Link>,
+                                    <Link href= '/productPage' className={classes.dropdownLink}>
+                                        Other
+                                    </Link>
+
+
+
+                                ]}
+                            />
+                        </ListItem>
+                    </List>
+                    {/*<IconButton*/}
+                    {/*    edge="start"*/}
+                    {/*    className={classes.menuButton}*/}
+                    {/*    color="inherit"*/}
+                    {/*    aria-label="open drawer"*/}
+                    {/*    aria-controls={mobileMenuId}*/}
+                    {/*    aria-haspopup="true"*/}
+                    {/*    onClick={handleProfileMenuOpen}*/}
+                    {/*>*/}
+
+                    {/*    <MenuIcon />*/}
+                    {/*</IconButton>*/}
+                    <Button href="/">
                         <div>
                             <img
-                                src={blinkee}
+                                src={blinkee_logo_5}
                                 alt="First slide"
                                 className="slick-image"
                             />
@@ -194,7 +273,8 @@ export default function Navbar() {
                     <div className={classes.grow} />
                     <div className={classes.sectionDesktop}>
 
-                        <Button color="inherit">SIGNIN</Button>
+                        <Button color="inherit" href= "/login">LogIn</Button>
+                        <Button color="inherit" href= "/register">Sign Up</Button>
                         <IconButton
                                    aria-label="account of current user"
                             aria-controls={menuId}
@@ -204,18 +284,25 @@ export default function Navbar() {
                         >
                             <AccountCircle />
                         </IconButton>
-                    </div>
-                    <div className={classes.sectionMobile}>
                         <IconButton
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
-                            aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
+                            href= "/cart"
                             color="inherit"
                         >
-                            <MoreIcon />
+                            <ShoppingCartIcon/>
                         </IconButton>
                     </div>
+                    {/*<div className={classes.sectionMobile}>*/}
+                    {/*    <IconButton*/}
+                    {/*        aria-label="show more"*/}
+                    {/*        aria-controls={mobileMenuId}*/}
+                    {/*        aria-haspopup="true"*/}
+                    {/*        onClick={handleMobileMenuOpen}*/}
+                    {/*        color="inherit"*/}
+                    {/*        href="/register"*/}
+                    {/*    >*/}
+                    {/*        <MoreIcon />*/}
+                    {/*    </IconButton>*/}
+                    {/*</div>*/}
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}

@@ -20,6 +20,8 @@ import feedback from "./component/feedback"
 import coupon from "./component/coupon"
 import LoginPage from "./component/login";
 import dropshipping from "./component/dropshipping";
+import ForgotPassword from "./component/forgotPwd";
+import feedbackApply from "./component/Feedback/feedbackApply";
 import dropfaq from "./component/dropfaq";
 import privancypolicy from "./component/privancypolicy";
 import returnpolicy from "./component/returnpolicy"
@@ -30,9 +32,10 @@ function App() {
       <BrowserRouter>
     <div className="App">
       <Switch>
-        <Route exact path= '/home' component={ home } />
+        <Route exact path= '/' component={ home } />
         <Route exact path='/navbar' component={ Navbar } />
         <Route exact path= '/register' component={ register } />
+        <Route exact path= '/feedbackApply' component={ feedbackApply } />
         <Route exact path= '/feedback' component={ feedback } />
         <Route exact path= '/coupon' component={ coupon } />
 
@@ -41,9 +44,6 @@ function App() {
         <Route exact path= '/product' component={product} />
         <Route exact path= '/productPage' component={productPage} />
         <Route exact path= '/cartPage' component={cartPage} />
-
-
-        <Route exact path= '/register' component={ register } />
 
         <Route exact path='/contactus' component={ Contactus } />
         <Route exact path='/discount' component= {discount } />
@@ -54,7 +54,9 @@ function App() {
 
         <Route exact path='/checkout' component={ checkout } />
         <Route exact path='/shippingpolicy' component={ shippingpolicy } />
+
         <Route exact path='/custom' component={ custom } />
+        <Route exact path='/forgotPassword' component={ ForgotPassword } />
         <Route exact path= '/dropfaq' component= { dropfaq } />
         <Route exact path= '/privancypolicy' component= { privancypolicy } />
         <Route exact path= '/returnpolicy' component= { returnpolicy } />
