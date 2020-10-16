@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from '../resources/jss/AddressForm';
 import PaymentForm from '../resources/jss/PaymentForm';
 import Review from '../resources/jss/Review';
+
 import Navbar from './navbar';
 import Footer from './Footer/footer';
 
@@ -82,6 +83,8 @@ export default function Checkout() {
     const handleBack = () => {
         setActiveStep(activeStep - 1);
     };
+
+
 
     return (
         <div>
