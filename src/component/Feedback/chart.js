@@ -1,16 +1,33 @@
 import React from 'react';
 import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Title from '../Feedback/title';
-import Button from "@material-ui/core/Button";
+import Button from "../Button/button";
+import CloseIcon from '@material-ui/icons/Close';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import FeedbackApply from './feedbackApply'
+
 
 const useStyles = makeStyles({
     btnChart:{
         marginBottom: 20,
     },
+
 });
 
 export default function Chart() {
     const theme = useStyles();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <React.Fragment>
@@ -21,45 +38,25 @@ export default function Chart() {
                 click on the button below "Get Start"
             </p>
             <p>
-                We were wondering if you could spare a few minutes to let us know
-                what we are getting right and what we can improve. If you are game just
-                click on the button below "Get Start"
+                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
+                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
+                auctor fringilla...
             </p>
             <div>
-                <br/>
-                <Button
-                    type="submit"
-                    variant="contained"
-                    color="secondary"
-                    className={theme.btnChart}
-                    // onClick={}
-                >
+                <Button className={theme.btnChart} color="rose" onClick={handleClickOpen}>
                     Get Start
                 </Button>
+                <Dialog open={open} onClose={handleClose} >
+                    <DialogActions>
+                        <Button onClick={handleClose} color="transparent">
+                            <CloseIcon/>
+                        </Button>
+                    </DialogActions>
+                    <DialogContent>
+                        <FeedbackApply/>
+                    </DialogContent>
+                </Dialog>
             </div>
-            {/*<ResponsiveContainer>*/}
-            {/*    <LineChart*/}
-            {/*        data={data}*/}
-            {/*        margin={{*/}
-            {/*            top: 16,*/}
-            {/*            right: 16,*/}
-            {/*            bottom: 0,*/}
-            {/*            left: 24,*/}
-            {/*        }}*/}
-            {/*    >*/}
-            {/*        <XAxis dataKey="time" stroke={theme.palette.text.secondary} />*/}
-            {/*        <YAxis stroke={theme.palette.text.secondary}>*/}
-            {/*            <Label*/}
-            {/*                angle={270}*/}
-            {/*                position="left"*/}
-            {/*                style={{ textAnchor: 'middle', fill: theme.palette.text.primary }}*/}
-            {/*            >*/}
-            {/*                Sales ($)*/}
-            {/*            </Label>*/}
-            {/*        </YAxis>*/}
-            {/*        <Line type="monotone" dataKey="amount" stroke={theme.palette.primary.main} dot={false} />*/}
-            {/*    </LineChart>*/}
-            {/*</ResponsiveContainer>*/}
         </React.Fragment>
     );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './navbar';
+import Footer from './Footer/footer';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Card } from '@material-ui/core';
@@ -87,6 +88,7 @@ export default function Home() {
                 </Grid>
 
             </Grid>
+            <Footer/>
         </div>
     );
 }

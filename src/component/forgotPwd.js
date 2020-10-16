@@ -8,7 +8,6 @@ import Email from "@material-ui/icons/Email";
 import People from "@material-ui/icons/People";
 // core components
 import Header from "./Header/header";
-import HeaderLinks from "./Header/headerLinks";
 // import Footer from "components/Footer/Footer.js";
 import GridContainer from "./Grid/gridContainer";
 import GridItem from "./Grid/gridItem";
@@ -19,16 +18,14 @@ import CardHeader from "./Card/cardHeader";
 import CardFooter from "./Card/cardFooter";
 import CustomInput from "./Card/customInput";
 
-import styles from "../resources/jss/loginStyle";
-
-import image from "../resources/images/bg_login3.jpg";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import InstagramIcon from "@material-ui/icons/Instagram";
+import styles from "../resources/jss/forgotPwdStyle";
+import image from "../resources/images/bg_login2.jpg";
+import HeaderLinksForgotPwd from "./Header/headerForgowPwd";
 import LockIcon from '@material-ui/icons/Lock';
 
 const useStyles = makeStyles(styles);
 
-export default function LoginPage(props) {
+export default function ForgotPassword(props) {
     const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
     setTimeout(function() {
         setCardAnimation("");
@@ -44,7 +41,7 @@ export default function LoginPage(props) {
                 href="/home"
                 target="/home"
                 leftLinks={<home/>}
-                rightLinks={<HeaderLinks />}
+                rightLinks={<HeaderLinksForgotPwd/>}
                 {...rest}
             />
             <div
@@ -60,46 +57,15 @@ export default function LoginPage(props) {
                         <GridItem xs={12} sm={12} md={4}>
                             <Card className={classes[cardAnimaton]}>
                                 <form className={classes.form}>
-                                    <CardHeader color="info" className={classes.cardHeader}>
-                                        <h4 >Login</h4>
-                                        <div className={classes.socialLine}>
-                                            {/*<Button*/}
-                                            {/*    justIcon*/}
-                                            {/*    href="#pablo"*/}
-                                            {/*    target="_blank"*/}
-                                            {/*    color="primary"*/}
-                                            {/*    onClick={e => e.preventDefault()}*/}
-                                            {/*>*/}
-                                            {/*    <i className={"fab fa-twitter"} />*/}
-                                            {/*</Button>*/}
-                                            <Button
-                                                justIcon
-                                                href="#pablo"
-                                                target="_blank"
-                                                color="facebook"
-                                                onClick={e => e.preventDefault()}
-                                            >
-                                                <FacebookIcon  />
-                                                <i className={"fab fa-facebook"} />
-                                            </Button>
-                                            <Button
-                                                justIcon
-                                                href="#pablo"
-                                                target="_blank"
-                                                color="rose"
-                                                onClick={e => e.preventDefault()}
-                                            >
-                                                <InstagramIcon/>
-                                                <i className={"fab fa-google-plus-g"} />
-                                            </Button>
-                                        </div>
+                                    <CardHeader color="primary" className={classes.cardHeader}>
+                                        <h4>Update Your</h4>
+                                        <h4>New Password</h4>
                                     </CardHeader>
-                                    <p className={classes.divider}>Or Be Classical</p>
-                                    <CardBody>
+                                    {/*<p className={classes.divider}>Or Be Classical</p>*/}
+                                    <CardBody >
                                         <CustomInput
                                             labelText="Email..."
                                             id="email"
-                                            required
                                             formControlProps={{
                                                 fullWidth: true
                                             }}
@@ -113,7 +79,25 @@ export default function LoginPage(props) {
                                             }}
                                         />
                                         <CustomInput
-                                            labelText="Password"
+                                        labelText="New Password"
+                                        id="pass"
+                                        formControlProps={{
+                                            fullWidth: true
+                                        }}
+                                        inputProps={{
+                                            type: "password",
+                                            endAdornment: (
+                                                <InputAdornment position="end">
+                                                    <LockIcon className={classes.inputIconsColor}>
+                                                        lock_outline
+                                                    </LockIcon>
+                                                </InputAdornment>
+                                            ),
+                                            autoComplete: "off"
+                                        }}
+                                    />
+                                        <CustomInput
+                                            labelText="Confirm Password"
                                             id="pass"
                                             formControlProps={{
                                                 fullWidth: true
@@ -123,7 +107,7 @@ export default function LoginPage(props) {
                                                 endAdornment: (
                                                     <InputAdornment position="end">
                                                         <LockIcon className={classes.inputIconsColor}>
-                                                                lock_outline
+                                                            lock_outline
                                                         </LockIcon>
                                                     </InputAdornment>
                                                 ),
@@ -132,13 +116,10 @@ export default function LoginPage(props) {
                                         />
                                     </CardBody>
                                     <CardFooter className={classes.cardFooter}>
-                                        <Button   color="success" size="sm" round>
-                                           login
+                                        <Button  href="/home" color="danger" size="sm" round>
+                                            Update
                                         </Button>
                                     </CardFooter>
-                                    <div className={classes.forgo}>
-                                        <a href="/forgotPassword" >Forgot Password</a>
-                                    </div>
                                 </form>
                             </Card>
                         </GridItem>
