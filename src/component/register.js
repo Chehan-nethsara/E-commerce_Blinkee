@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../resources/css/stylesregister.css"
 import Navbar from "./navbar";
 import Footer from './Footer/footer';
-import {MDBRow, MDBCol, MDBBtn, MDBContainer} from "mdbreact";
+import {MDBRow, MDBCol, MDBBtn, MDBContainer, MDBAlert} from "mdbreact";
 
 class RegisterComponent extends React.Component {
     state = {
@@ -209,7 +209,7 @@ class RegisterComponent extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
-                                        <MDBBtn type="submit" color="primary">
+                                        <MDBBtn type="submit" color="primary" >
                                             Create
                                         </MDBBtn>
                                     </form>

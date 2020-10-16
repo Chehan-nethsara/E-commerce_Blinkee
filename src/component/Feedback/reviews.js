@@ -8,6 +8,10 @@ import Button from "../Button/button";
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Rating from "@material-ui/lab/Rating";
 
 const useStyles = makeStyles((theme) => ({
     seeMore: {
@@ -24,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
             marginTop: theme.spacing(4),
         },
         cardGrid: {
-            paddingTop: theme.spacing(8),
+            paddingTop: theme.spacing(2),
             paddingBottom: theme.spacing(8),
         },
         card: {
-        backgroundColor: "#FFEF7C",
+        backgroundColor: "#BFFFE7",
             height: '100%',
             display: 'flex',
             flexDirection: 'column',
@@ -49,35 +53,35 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Orders() {
     const classes = useStyles();
+    const [value, setValue] = React.useState(2);
+
     return (
         <React.Fragment>
-            <Title> <h1> Customer Reviews </h1> </Title>
+            <Title> <h1> Recent Reviews </h1> </Title>
             <main>
                 <Container className={classes.cardGrid} maxWidth="md">
-                    {/* End hero unit */}
                     <Grid container spacing={4}>
                         {cards.map((card) => (
                             <Grid item key={card} xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
-                                    {/*<CardMedia*/}
-                                    {/*    className={classes.cardMedia}*/}
-                                    {/*    image='../images/register.jpg'*/}
-                                    {/*    title="Image title"*/}
-                                    {/*/>*/}
                                     <CardContent className={classes.cardContent}>
                                         <Typography gutterBottom variant="h5" component="h2">
-                                            Heading
+                                            <div><AccountCircleIcon/></div>
+                                           Customer Name
                                         </Typography>
                                         <Typography>
-                                            This is a media card. You can use this section to describe the content.
+                                            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+                                            across all continents except Antarctica
                                         </Typography>
+                                        <br/>
+                                        <Rating name="read-only" size="medium" value={value} readOnly />
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small" color="warning">
-                                            View
+                                        <Button size="small" color="danger">
+                                           <ThumbDownIcon/>
                                         </Button>
                                         <Button size="small" color="facebook">
-                                            Like
+                                            <ThumbUpIcon/>
                                         </Button>
                                     </CardActions>
                                 </Card>
@@ -86,17 +90,6 @@ export default function Orders() {
                     </Grid>
                 </Container>
             </main>
-            {/* Footer */}
-            {/*<footer className={classes.footer}>*/}
-            {/*    <Typography variant="h6" align="center" gutterBottom>*/}
-            {/*        Footer*/}
-            {/*    </Typography>*/}
-            {/*    <Typography variant="subtitle1" align="center" color="textSecondary" component="p">*/}
-            {/*        Something here to give the footer a purpose!*/}
-            {/*    </Typography>*/}
-            {/*    <Copyright />*/}
-            {/*</footer>*/}
-            {/* End footer */}
         </React.Fragment>
     );
 }
