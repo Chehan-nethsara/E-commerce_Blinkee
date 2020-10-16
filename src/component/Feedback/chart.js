@@ -40,7 +40,7 @@ export default function Chart() {
             <p>
                 Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
                 scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                auctor fringilla.
+                auctor fringilla...
             </p>
             <div>
                 <Button className={theme.btnChart} color="rose" onClick={handleClickOpen}>
