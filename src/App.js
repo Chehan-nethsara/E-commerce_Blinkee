@@ -29,7 +29,7 @@ function App() {
       <BrowserRouter>
     <div className="App">
       <Switch>
-        <Route exact path= '/home' component={ home } />
+        <Route exact path= '/' component={ home } />
         <Route exact path='/navbar' component={ Navbar } />
         <Route exact path= '/register' component={ register } />
         <Route exact path= '/feedbackApply' component={ feedbackApply } />
