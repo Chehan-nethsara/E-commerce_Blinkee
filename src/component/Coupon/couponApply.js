@@ -4,16 +4,15 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Rating from "@material-ui/lab/Rating";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContentText from "@material-ui/core/DialogContentText";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(0),
+        marginTop: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%', // Fix IE 11 issue.
         marginTop: theme.spacing(1),
     },
-    submitRating: {
+    submit: {
         margin: theme.spacing(3, 0, 2),
     },
     rating:{
@@ -36,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
     const classes = useStyles();
+
+    const [value, setValue] = React.useState(0);
 
     const [open, setOpen] = React.useState(false);
 
@@ -47,23 +48,20 @@ export default function SignIn() {
         setOpen(false);
     };
 
-    const [value, setValue] = React.useState(0);
-
     return (
         <Container component="main" maxWidth="xs">
             <div className={classes.paper}>
                 <Typography component="h1" variant="h5">
-                    Drop Your Feedback Here
+                    Discount Coupon
                 </Typography>
                 <form className={classes.form} noValidate>
-                    <Rating
-                        size="large"
-                        className={classes.rating}
-                        name="simple-controlled"
-                        value={value}
-                        onChange={(event, newValue) => {
-                            setValue(newValue);
-                        }}
+                    <TextField
+                        variant="outlined"
+                        margin="normal"
+                        fullWidth
+                        id="orderNo"
+                        label="Order Number"
+                        name="orderNo"
                     />
                     <TextField
                         variant="outlined"
@@ -78,24 +76,17 @@ export default function SignIn() {
                         margin="normal"
                         fullWidth
                         id="email"
-                        label="Email Address"
+                        label="Your Email"
                         name="email"
                         autoComplete="email"
-                    />
-                    <TextField
-                        variant="outlined"
-                        margin="normal"
-                        fullWidth
-                        id="feedback"
-                        label="Type your feedback here..."
-                        name="feedback"
                     />
                     <Button
                         type="submit"
                         variant="contained"
-                        color="primary"
-                        className={classes.submitRating}
+                        color="secondary"
+                        className={classes.submit}
                         onClick={handleClickOpen}
+
                     >
                         Submit
                     </Button>
@@ -108,7 +99,7 @@ export default function SignIn() {
                         <DialogTitle id="alert-dialog-title">{"Thank You!"}</DialogTitle>
                         <DialogContent>
                             <DialogContentText id="alert-dialog-description">
-                                Thank you for submitting your feedback.
+                                Your coupon has been sent.
                             </DialogContentText>
                         </DialogContent>
                         <DialogActions>
