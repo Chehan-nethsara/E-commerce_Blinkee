@@ -14,6 +14,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import blinkee from '../resources/images/blinkee.png';
+import home from "./home";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
     grow: {
@@ -165,7 +167,7 @@ export default function Navbar() {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Button>
+                    <Button href="/home">
                         <div>
                             <img
                                 src={blinkee}

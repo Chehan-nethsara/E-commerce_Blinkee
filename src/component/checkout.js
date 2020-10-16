@@ -1,272 +1,149 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import "../resources/style/checkout.css"
-import Navbar from "./navbar";
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Paper from '@material-ui/core/Paper';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Typography from '@material-ui/core/Typography';
+import AddressForm from '../resources/jss/AddressForm';
+import PaymentForm from '../resources/jss/PaymentForm';
+import Review from '../resources/jss/Review';
+import Navbar from './navbar';
+import Footer from './Footer/footer';
 
-import {Card} from "@material-ui/core";
 
 
-const validEmailRegex = RegExp(
-    /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-);
-const validateForm = errors => {
-    let valid = true;
-    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
-    return valid;
-};
 
-export default class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            fullName: null,
-            email: null,
-            password: null,
-            lastName: null,
-            companyName: null,
-            countryName: null,
-            streetAdd: null,
-            cityName: null,
-            phoneNum: null,
-            cardNum: null,
-            expDate: null,
-            cardCode: null,
-            errors: {
-                fullName: '',
-                email: '',
-                password: '',
-                lastName: '',
-                companyName: '',
-                countryName: '',
-                streetAdd: '',
-                cityName: '',
-                phoneNum: '',
-                cardNum: '',
-                expDate: '',
-                cardCode: '',
-            }
-        };
+const useStyles = makeStyles((theme) => ({
+    appBar: {
+        position: 'relative',
+    },
+    layout: {
+        width: 'auto',
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+            width: 600,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+        },
+    },
+    paper: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        padding: theme.spacing(2),
+        [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+            marginTop: theme.spacing(6),
+            marginBottom: theme.spacing(6),
+            padding: theme.spacing(3),
+        },
+    },
+    stepper: {
+        padding: theme.spacing(3, 0, 5),
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(1),
+    },
+}));
+
+const steps = ['Shipping address', 'Payment details', 'Review your order'];
+
+function getStepContent(step) {
+    switch (step) {
+        case 0:
+            return <AddressForm />;
+        case 1:
+            return <PaymentForm />;
+        case 2:
+            return <Review />;
+        default:
+            throw new Error('Unknown step');
     }
+}
 
-    handleChange = (event) => {
-        event.preventDefault();
-        const {name, value} = event.target;
-        let errors = this.state.errors;
+export default function Checkout() {
+    const classes = useStyles();
+    const [activeStep, setActiveStep] = React.useState(0);
 
-        switch (name) {
-            case 'fullName':
-                errors.fullName =
-                    value.length < 3
-                        ? 'First Name must be at least 3 characters long!'
-                        : '';
-                break;
-            case 'lastName':
-                errors.lastName =
-                    value.length < 5
-                        ? 'Last Name must be at least 5 characters long!'
-                        : '';
-                break;
-            case 'companyName':
-                errors.companyName =
-                    value.length < 3
-                        ? 'Company Name must be entered!'
-                        : '';
-                break;
-            case 'countryName':
-                errors.countryName =
-                    value.length < 2
-                        ? 'Country Name must be must be entered!'
-                        : '';
-                break;
-            case 'streetAdd':
-                errors.streetAdd =
-                    value.length < 3
-                        ? 'Street Address must be must be entered!'
-                        : '';
-                break;
-            case 'cityName':
-                errors.cityName =
-                    value.length < 4
-                        ? 'City Name must be must be entered!'
-                        : '';
-                break;
-            case 'phoneNum':
-                errors.phoneNum =
-                    value.length < 9
-                        ? 'Phone number must be must be entered!'
-                        : '';
-                break;
-            case 'cardNum':
-                errors.cardNum =
-                    value.length < 5
-                        ? 'Card number must be must be entered!'
-                        : '';
-                break;
-            case 'expDate':
-                errors.expDate =
-                    value.length < 4
-                        ? 'Card expiry date must be must be entered!'
-                        : '';
-                break;
-            case 'password':
-                errors.password =
-                    value.length < 8
-                        ? 'Password must be at least 8 characters long!'
-                        : '';
-                break;
-            case 'email':
-                errors.email =
-                    validEmailRegex.test(value)
-                        ? ''
-                        : 'Email is not valid!';
-                break;
-            case 'cardCode':
-                errors.cardCode =
-                    value.length < 5
-                        ? 'Card code must be must be entered!'
-                        : '';
-                break;
-            default:
-                break;
-        }
+    const handleNext = () => {
+        setActiveStep(activeStep + 1);
+    };
 
-        this.setState({errors, [name]: value});
-    }
+    const handleBack = () => {
+        setActiveStep(activeStep - 1);
+    };
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        if (validateForm(this.state.errors)) {
-            console.info('Valid Form')
-        } else {
-            console.error('Invalid Form')
-        }
-    }
-
-
-    render() {
-        const {errors} = this.state;
-        return (
-
-            <div className="header">
-                <Navbar/>
-                <div className="content">
-                    <br/>
-
-                    <form onSubmit={this.handleSubmit} noValidate>
-                        <div className="container2">
-                            <h2>Blinkee Billing Details</h2>
-
-
-                            <div className='fullName'>
-                                <label htmlFor="fullName">First Name:*</label>
-                                <input type='text' id= 'fname' name='fullName'  onChange={this.handleChange} noValidate /> <br/>
-                                {errors.fullName.length > 0 &&
-                                <span className='error'>{errors.fullName}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="lastName">Last Name:*</label>
-                                <input type='text' id= 'lname' name='lastName' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.lastName.length > 0 &&
-                                <span className='error'>{errors.lastName}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="companyName">Company Name:*</label>
-                                <input type='text' id= 'cname' name='companyName' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.companyName.length > 0 &&
-                                <span className='error'>{errors.companyName}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="countryName">Country:*</label>
-                                <input type='text' id= 'count' name='countryName' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.countryName.length > 0 &&
-                                <span className='error'>{errors.countryName}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="streetAdd">Street Address:*</label>
-                                <input type='text' id= 'street' name='streetAdd' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.streetAdd.length > 0 &&
-                                <span className='error'>{errors.streetAdd}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="cityName">Town/City:*</label>
-                                <input type='text' id= 'town' name='cityName' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.cityName.length > 0 &&
-                                <span className='error'>{errors.cityName}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="phoneNum">Phone:*</label>
-                                <input type='number' id= 'phone' name='phoneNum' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.phoneNum.length > 0 &&
-                                <span className='error'>{errors.phoneNum}</span>}
-                            </div>
-
-                            <div className='fullName'>
-                                <label htmlFor="email">Email:*</label>
-                                <input type='email' id='Email' name='email' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.email.length > 0 &&
-                                <span className='error'>{errors.email}</span>}
-                            </div>
-                            <div className='fullName'>
-                                <label htmlFor="password">Password:*</label>
-                                <input type='password' id='pasw' name='password' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.password.length > 0 &&
-                                <span className='error'>{errors.password}</span>}
-                            </div>
-
-                            <div className="detail">
-                                <p>If you don't have account?<a href="#" id="acc">Create an Account</a></p>
-                                <div className="required">
-                                    <h3>* Indicates required feelds.</h3>
+    return (
+        <div>
+            <Navbar/>
+        <React.Fragment>
+            <CssBaseline />
+            <AppBar position="absolute" color="default" className={classes.appBar}>
+                <Toolbar>
+                    <Typography variant="h6" color="inherit" noWrap>
+                        Blinkee Billing Details
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <main className={classes.layout}>
+                <Paper className={classes.paper}>
+                    <Typography component="h1" variant="h4" align="center">
+                        Checkout
+                    </Typography>
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    <React.Fragment>
+                        {activeStep === steps.length ? (
+                            <React.Fragment>
+                                <Typography variant="h5" gutterBottom>
+                                    Thank you for your order.
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                    Your order number is #2001539. We have emailed your order confirmation, and will
+                                    send you an update when your order has shipped.
+                                </Typography>
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+                                {getStepContent(activeStep)}
+                                <div className={classes.buttons}>
+                                    {activeStep !== 0 && (
+                                        <Button onClick={handleBack} className={classes.button}>
+                                            Back
+                                        </Button>
+                                    )}
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={handleNext}
+                                        className={classes.button}
+                                    >
+                                        {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                    </Button>
                                 </div>
-                            </div>
-                        </div>
+                            </React.Fragment>
+                        )}
+                    </React.Fragment>
+                </Paper>
 
-
-                        <div className="container3">
-                            <h2>Credit Card Details</h2>
-                            <h4>Pay with your card*</h4>
-
-
-                            <div className='fullName'>
-                                <label htmlFor="cardNum">Card Number:*</label>
-                                <input type='text' id= 'card' name='cardNum' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.cardNum.length > 0 &&
-                                <span className='error'>{errors.cardNum}</span>}
-                            </div>
-
-                            <div className='fullName'>
-                                <label htmlFor="expDate">Expiry (MM/YY):*</label>
-                                <input type='text' id= 'exp' name='expDate' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.expDate.length > 0 &&
-                                <span className='error'>{errors.expDate}</span>}
-                            </div>
-
-                            <div className='password'>
-                                <label htmlFor="cardCode">Card Code:*</label>
-                                <input type='password' id='code' name='cardCode' onChange={this.handleChange} noValidate /> <br/>
-                                {errors.cardCode.length > 0 &&
-                                <span className='error'>{errors.cardCode}</span>}
-                            </div>
-
-
-                            <div className="button">
-
-                                <button type="submit" id="sub" onSubmit={this.handleSubmit}>Pay</button> <br/>
-
-                                <button type="Reset" id="res">Reset</button> <br/>
-
-                                <button type="Cancel" id="cal"> Cancel</button>
-
-                            </div>
-                            <div className="required">
-                                <h3>* Indicates required feelds.</h3>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-        );
-    }
+            </main>
+        </React.Fragment>
+            <Footer/>
+        </div>
+    );
 }
