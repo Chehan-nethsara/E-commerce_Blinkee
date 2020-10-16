@@ -307,7 +307,7 @@ const useStyles = makeStyles((theme) => ({
     },
     but2:{
         display:"block",
-        marginLeft:theme.spacing(1),
+        marginLeft:theme.spacing(25),
     },
     blog:{
         marginRight:'200px',
@@ -541,7 +541,7 @@ color={"transparent"}
                                     <Grid item xs={12} lg={9} md={8}>
                                         <div className={classes.blog}>
                                     <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
-                                        product name
+                                        Necklace
                                     </Box>
                                     <Typography component="legend" variant="h6">
                                         <Box color="info.main" textAlign="center">$ 3000</Box>
@@ -553,15 +553,24 @@ color={"transparent"}
 Qty1
                                         </Box>
                                     </Typography>
-                                            <Button className={classes.but1}
+                                            <Button size="sm"
                                                     color={"transparent"}
                                                     startIcon={ <DeleteIcon /> }
                                                     onClick={ handleClickOpen }
                                             >
                                             </Button>
 
+                                            <Button
+                                                size="sm"
+                                                    color={"transparent"}
+                                                    startIcon={ <FavoriteBorderOutlinedIcon /> }
 
-                                <Dialog
+                                            >
+                                            </Button>
+
+
+
+                                            <Dialog
                                     open={open}
                                     onClose={handleClose}
                                     aria-labelledby="alert-dialog-title"
@@ -583,12 +592,7 @@ Qty1
                                     </DialogActions>
                                 </Dialog>
 
-                                            <Button className={classes.but2}
-                                                    color={"transparent"}
-                                                    startIcon={ <FavoriteBorderOutlinedIcon /> }
 
-                                            >
-                                            </Button>
 
 
                                         </div>
@@ -623,10 +627,10 @@ Qty1
                                 <Grid item xs={12} lg={9} md={8}>
                                     <div className={classes.blog}>
                                         <Box component="div" my={1} whiteSpace="normal" bgcolor="background.paper">
-                                            product name
+                                            Necklace
                                         </Box>
                                         <Typography component="legend" variant="h6">
-                                            <Box color="info.main" textAlign="center">RS 3000</Box>
+                                            <Box color="info.main" textAlign="center">$ 3000</Box>
                                         </Typography>
                                         <Box color="error.main">27%</Box>
 
@@ -635,10 +639,18 @@ Qty1
 Qty2
                                             </Box>
                                         </Typography>
-                                        <Button className={classes.but1}
+                                        <Button size="sm"
                                                 color={"transparent"}
                                                 startIcon={ <DeleteIcon /> }
                                                 onClick={ handleClickOpen }
+                                        >
+                                        </Button>
+
+                                        <Button
+                                            size="sm"
+                                            color={"transparent"}
+                                            startIcon={ <FavoriteBorderOutlinedIcon /> }
+
                                         >
                                         </Button>
 
